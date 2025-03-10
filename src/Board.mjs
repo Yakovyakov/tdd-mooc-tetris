@@ -6,11 +6,13 @@ class Block {
 }
 
 class MovableShape {
+  shape;
   row;
   col;
 
-  constructor(row, col) {
-     this.row = row;
+  constructor(shape, row, col) {
+    this.shape = shape;
+    this.row = row;
     this.col = col;
   }
 }
