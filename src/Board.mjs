@@ -83,6 +83,16 @@ export class Board {
     }
     return false;
   }
+
+  #stopFalling() {
+    for (let row = 0; row < this.height(); row++) {
+      for (let col = 0; col < this.width(); col++) {
+        this.immobile[row][col] = this.blockAt(row, col);
+      }
+    }
+    this.#falling = null;
+  }
+
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
