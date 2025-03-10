@@ -48,6 +48,16 @@ export class Board {
     return (this.immobile[row][col]);
   }
 
+  drop(letter) {
+    if (typeof letter === "string") {
+      letter = new Block(letter);
+    }
+    if (this.falling) {
+      throw new Error("another piece is already falling");
+    }
+    this.falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
+  }
+
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
