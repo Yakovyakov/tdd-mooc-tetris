@@ -45,9 +45,9 @@ export class Board {
         return block;
       }
     }
-    return (this.immobile[row][col])
+    return (this.immobile[row][col]);
   }
-  
+
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
