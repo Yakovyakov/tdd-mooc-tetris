@@ -33,7 +33,7 @@ class MovableShape {
 export class Board {
   width;
   height;
-  falling=null;
+  #falling=null;
   immobile;
 
   constructor(width, height) {
@@ -44,12 +44,12 @@ export class Board {
       this.immobile[row] = new Array(width).fill(EMPTY);
   }
   hasFalling() {
-    return this.falling !== null;
+    return this.#falling !== null;
   }
 
   blockAt (row,col) {
     if (this.hasFalling()) {
-      const block = this.falling.blockAt(row, col);
+      const block = this.#falling.blockAt(row, col);
       if (block !== EMPTY) {
         return block;
       }
@@ -64,15 +64,15 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
-    this.falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
+    this.#falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
   }
 
   tick() {
     if (!this.hasFalling()) {
       return;
     }
-    const attempt = this.falling.moveDown();
-    this.falling = attempt;
+    const attempt = this.#falling.moveDown();
+    this.#falling = attempt;
   }
 
   toString() {
