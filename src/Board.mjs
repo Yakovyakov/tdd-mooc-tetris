@@ -1,3 +1,10 @@
+class Block {
+  letter;
+  constructor(letter) {
+    this.letter = letter;
+  }
+}
+
 export class Board {
   width;
   height;
