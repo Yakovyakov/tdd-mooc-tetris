@@ -31,13 +31,13 @@ class MovableShape {
 }
 
 export class Board {
-  width;
+  #width;
   #height;
   #falling=null;
   immobile;
 
   constructor(width, height) {
-    this.width = width;
+    this.#width = width;
     this.#height = height;
     this.immobile = new Array(height);
     for (let row = 0; row < height; row ++) 
@@ -49,6 +49,10 @@ export class Board {
 
   height() {
     return this.#height;
+  }
+
+  width() {
+    return this.#width;
   }
 
   blockAt (row,col) {
@@ -68,7 +72,7 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
-    this.#falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
+    this.#falling = new MovableShape(letter, 0, Math.floor((this.width() - 1) / 2));
   }
 
   tick() {
@@ -93,7 +97,7 @@ export class Board {
 
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
-      for (let col = 0; col < this.width; col++) {
+      for (let col = 0; col < this.width(); col++) {
         this.immobile[row][col] = this.blockAt(row, col);
       }
     }
@@ -103,7 +107,7 @@ export class Board {
   toString() {
     let s = '';
     for (let row = 0; row < this.height(); row++) {
-      for (let col = 0; col < this.width; col++) {
+      for (let col = 0; col < this.width(); col++) {
         s += this.blockAt(row,col);
       }
       s += "\n";
