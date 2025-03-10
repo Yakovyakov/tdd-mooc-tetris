@@ -11,11 +11,14 @@ export class Board {
       this.immobile[row] = new Array(width).fill('.');
   }
 
+  blockAt (row,col) {
+    return (this.immobile[row][col])
+  }
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
       for (let col = 0; col < this.width; col++) {
-        s += this.immobile[row][col]
+        s += this.blockAt(row,col)
       }
       s += "\n";
     }
