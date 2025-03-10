@@ -23,6 +23,11 @@ class MovableShape {
       return EMPTY;
     }
   }
+
+  moveDown() {
+    return new MovableShape(this.shape, this.row + 1, this.col);
+  }
+
 }
 
 export class Board {
