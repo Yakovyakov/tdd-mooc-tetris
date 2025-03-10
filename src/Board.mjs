@@ -94,7 +94,12 @@ export class Board {
 
     return false;
   }
-
+  #hitsImmobile(falling) {
+    if (this.immobile[falling.row][falling.col] !== EMPTY) {
+      return true;
+    }
+  return false;
+  }
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
