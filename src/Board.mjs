@@ -64,6 +64,14 @@ export class Board {
     this.falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
   }
 
+  tick() {
+    if (!this.falling) {
+      return;
+    }
+    const attempt = this.falling.moveDown();
+    this.falling = attempt;
+  }
+
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
