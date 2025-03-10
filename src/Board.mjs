@@ -80,7 +80,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveDown();
-    if (this.#hitsFloor(attempt)){
+    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)){
       this.#stopFalling();
     } else {
       this.#falling = attempt;
