@@ -1,3 +1,4 @@
+const EMPTY = '.';
 class Block {
   letter;
   constructor(letter) {
@@ -19,7 +20,7 @@ class MovableShape {
     if (row === this.row && col === this.col) {
       return this.shape.letter;
     } else {
-      return '.';
+      return EMPTY;
     }
   }
 }
@@ -35,13 +36,13 @@ export class Board {
     this.height = height;
     this.immobile = new Array(height);
     for (let row = 0; row < height; row ++) 
-      this.immobile[row] = new Array(width).fill('.');
+      this.immobile[row] = new Array(width).fill(EMPTY);
   }
 
   blockAt (row,col) {
     if (this.falling) {
       const block = this.falling.blockAt(row, col);
-      if (block !== '.') {
+      if (block !== EMPTY) {
         return block;
       }
     }
