@@ -80,17 +80,16 @@ export class Board {
   }
 
   #hitsFloor(falling) {
-    for (const block of falling.nonEmptyBlocks()) {
-      if (block.row >= this.height) {
-        return true;
-      }
+    if (falling.row >= this.height) {
+      return true;
     }
+
     return false;
   }
 
   #stopFalling() {
-    for (let row = 0; row < this.height(); row++) {
-      for (let col = 0; col < this.width(); col++) {
+    for (let row = 0; row < this.height; row++) {
+      for (let col = 0; col < this.width; col++) {
         this.immobile[row][col] = this.blockAt(row, col);
       }
     }
