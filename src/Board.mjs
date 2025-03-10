@@ -15,11 +15,19 @@ class MovableShape {
     this.row = row;
     this.col = col;
   }
+  blockAt(row,col){
+    if (row === this.row && col === this.col) {
+      return this.shape.letter;
+    } else {
+      return '.';
+    }
+  }
 }
 
 export class Board {
   width;
   height;
+  falling=null;
   immobile;
 
   constructor(width, height) {
