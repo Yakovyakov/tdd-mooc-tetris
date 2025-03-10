@@ -43,9 +43,12 @@ export class Board {
     for (let row = 0; row < height; row ++) 
       this.immobile[row] = new Array(width).fill(EMPTY);
   }
+  hasFalling() {
+    return this.falling !== null;
+  }
 
   blockAt (row,col) {
-    if (this.falling) {
+    if (this.hasFalling()) {
       const block = this.falling.blockAt(row, col);
       if (block !== EMPTY) {
         return block;
@@ -58,14 +61,14 @@ export class Board {
     if (typeof letter === "string") {
       letter = new Block(letter);
     }
-    if (this.falling) {
+    if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
     this.falling = new MovableShape(letter, 0, Math.floor((this.width - 1) / 2));
   }
 
   tick() {
-    if (!this.falling) {
+    if (!this.hasFalling()) {
       return;
     }
     const attempt = this.falling.moveDown();
