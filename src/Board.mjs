@@ -32,19 +32,23 @@ class MovableShape {
 
 export class Board {
   width;
-  height;
+  #height;
   #falling=null;
   immobile;
 
   constructor(width, height) {
     this.width = width;
-    this.height = height;
+    this.#height = height;
     this.immobile = new Array(height);
     for (let row = 0; row < height; row ++) 
       this.immobile[row] = new Array(width).fill(EMPTY);
   }
   hasFalling() {
     return this.#falling !== null;
+  }
+
+  height() {
+    return this.#height;
   }
 
   blockAt (row,col) {
@@ -80,7 +84,7 @@ export class Board {
   }
 
   #hitsFloor(falling) {
-    if (falling.row >= this.height) {
+    if (falling.row >= this.height()) {
       return true;
     }
 
@@ -88,7 +92,7 @@ export class Board {
   }
 
   #stopFalling() {
-    for (let row = 0; row < this.height; row++) {
+    for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width; col++) {
         this.immobile[row][col] = this.blockAt(row, col);
       }
@@ -98,7 +102,7 @@ export class Board {
 
   toString() {
     let s = '';
-    for (let row = 0; row < this.height; row++) {
+    for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width; col++) {
         s += this.blockAt(row,col);
       }
