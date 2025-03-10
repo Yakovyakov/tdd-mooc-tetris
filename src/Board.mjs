@@ -75,6 +75,14 @@ export class Board {
     this.#falling = attempt;
   }
 
+  #hitsFloor(falling) {
+    for (const block of falling.nonEmptyBlocks()) {
+      if (block.row >= this.height) {
+        return true;
+      }
+    }
+    return false;
+  }
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
