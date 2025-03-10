@@ -34,14 +34,14 @@ export class Board {
   #width;
   #height;
   #falling=null;
-  immobile;
+  #immobile;
 
   constructor(width, height) {
     this.#width = width;
     this.#height = height;
-    this.immobile = new Array(height);
+    this.#immobile = new Array(height);
     for (let row = 0; row < height; row ++) 
-      this.immobile[row] = new Array(width).fill(EMPTY);
+      this.#immobile[row] = new Array(width).fill(EMPTY);
   }
   hasFalling() {
     return this.#falling !== null;
@@ -62,7 +62,7 @@ export class Board {
         return block;
       }
     }
-    return (this.immobile[row][col]);
+    return (this.#immobile[row][col]);
   }
 
   drop(letter) {
@@ -95,7 +95,7 @@ export class Board {
     return false;
   }
   #hitsImmobile(falling) {
-    if (this.immobile[falling.row][falling.col] !== EMPTY) {
+    if (this.#immobile[falling.row][falling.col] !== EMPTY) {
       return true;
     }
   return false;
@@ -103,7 +103,7 @@ export class Board {
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
-        this.immobile[row][col] = this.blockAt(row, col);
+        this.#immobile[row][col] = this.blockAt(row, col);
       }
     }
     this.#falling = null;
