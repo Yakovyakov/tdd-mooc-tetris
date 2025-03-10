@@ -41,7 +41,7 @@ export class Board {
   blockAt (row,col) {
     if (this.falling) {
       const block = this.falling.blockAt(row, col);
-      if (block !== EMPTY) {
+      if (block !== '.') {
         return block;
       }
     }
