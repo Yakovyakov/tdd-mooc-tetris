@@ -39,8 +39,15 @@ export class Board {
   }
 
   blockAt (row,col) {
+    if (this.falling) {
+      const block = this.falling.blockAt(row, col);
+      if (block !== EMPTY) {
+        return block;
+      }
+    }
     return (this.immobile[row][col])
   }
+  
   toString() {
     let s = '';
     for (let row = 0; row < this.height; row++) {
