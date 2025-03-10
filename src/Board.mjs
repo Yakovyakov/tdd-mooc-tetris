@@ -1,8 +1,11 @@
 const EMPTY = '.';
 class Block {
-  letter;
+  #letter;
   constructor(letter) {
-    this.letter = letter;
+    this.#letter = letter;
+  }
+  letter() {
+    return this.#letter;
   }
 }
 
@@ -18,7 +21,7 @@ class MovableShape {
   }
   blockAt(row,col){
     if (row === this.row && col === this.col) {
-      return this.shape.letter;
+      return this.shape.letter();
     } else {
       return EMPTY;
     }
