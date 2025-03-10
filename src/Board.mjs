@@ -72,7 +72,11 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveDown();
-    this.#falling = attempt;
+    if (this.#hitsFloor(attempt)){
+      this.#stopFalling();
+    } else {
+      this.#falling = attempt;
+    }
   }
 
   #hitsFloor(falling) {
