@@ -1,4 +1,7 @@
+import { shapeToString } from "./shape.mjs";
+
 const EMPTY = '.';
+
 class Block {
   #letter;
   constructor(letter) {
