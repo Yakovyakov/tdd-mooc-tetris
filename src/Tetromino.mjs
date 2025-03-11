@@ -8,6 +8,15 @@ export class Tetromino {
      ...`
   );
 
+	static I_SHAPE = Tetromino.fromString(
+    `.....
+    .....
+    IIII.
+    .....
+    .....`
+	);
+
+
 	#shape;
 	static fromString(initialShape) {
 		const shape = RotatingShape.fromString(initialShape);
@@ -23,7 +32,7 @@ export class Tetromino {
 	}
 	
 	rotateLeft() {
-
+		return new Tetromino(this.#shape.rotateLeft());
 	}
 
 	blockAt() {}
