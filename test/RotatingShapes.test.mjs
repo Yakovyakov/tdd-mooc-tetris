@@ -1,8 +1,8 @@
-/*
+
 import { describe, test } from "vitest";
 import { expect } from "chai";
 import { RotatingShape } from "../src/RotatingShape.mjs";
-
+/*
 describe("Rotating 3x3 shape", () => {
   const shape = RotatingShape.fromString(
     `ABC
