@@ -22,7 +22,6 @@ export class Tetromino {
 
 	#currentOrintation;
 	#orientations;
-	#shape;
 	static fromString(initialShape, currentOrientation, orientationCount = 4) {
 		const shape = RotatingShape.fromString(initialShape);
 		const orientations=[shape,
@@ -39,7 +38,7 @@ export class Tetromino {
 
 	}
 
-	#shape1() {
+	#shape() {
 		return this.#orientations[this.#currentOrintation]
 	}
 	rotateRight() {
@@ -53,7 +52,7 @@ export class Tetromino {
 	blockAt() {}
 	
 	toString() {
-		return this.#shape1().toString();
+		return this.#shape().toString();
 	}
 	
 }
