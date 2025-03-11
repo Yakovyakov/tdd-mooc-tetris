@@ -16,10 +16,16 @@ export class Tetromino {
     .....`
 	);
 
-
+	#currentOrintation;
+	#orientations;
 	#shape;
 	static fromString(initialShape) {
 		const shape = RotatingShape.fromString(initialShape);
+		let orientations=[shape,
+			shape.rotateRight(),
+			shape.rotateRight().rotateRight(),
+			shape.rotateRight().rotateRight().rotateRight()
+		].slice(0,4);
 		return new Tetromino(shape);
 	}
 
