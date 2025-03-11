@@ -1,7 +1,15 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
+	
+	static T_SHAPE = Tetromino.fromString(
+    `.T.
+     TTT
+     ...`
+  );
+
 	#shape;
+
 	constructor(initialShape) {
 			this.#shape = initialShape;
 	}
