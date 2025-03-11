@@ -22,11 +22,12 @@ export class RotatingShape {
   }
 
   rotateRight(){
-    const shapeRotated = new Array(this.#shape.lenth);
-    for (let row = 0; row < this.#shape.length; row++) {
-      shapeRotated[row] = new Array(this.#shape.length);
-      for (let column = 0; column < this.#shape.length; column++) {
-        shapeRotated[row][column] = this.#shape[this.#shape.length - 1 - column][row];
+    const size = this.#shape.length;
+    const shapeRotated = new Array(size);
+    for (let row = 0; row < size; row++) {
+      shapeRotated[row] = new Array(size);
+      for (let column = 0; column < size; column++) {
+        shapeRotated[row][column] = this.#shape[size - 1 - column][row];
       }
     }
     return new RotatingShape(shapeRotated);
