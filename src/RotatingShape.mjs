@@ -20,6 +20,10 @@ export class RotatingShape {
     return this.#shape.length;
   }
 
+  blockAt(row,col){
+    return this.#shape[row][col];
+  }
+  
   toString() {
     return shapeToString(this);
   }
