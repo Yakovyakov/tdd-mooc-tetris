@@ -5,11 +5,12 @@ export class RotatingShape {
 
   static fromString(shape) {
     return new RotatingShape(
-      shape.split("\n").map((row) => row.split(""))
+      shape.replaceAll(' ', '').split('\n').map((row) => row.split(""))
     );
   }
 
   constructor(shape) {
+    console.log(shape);
     this.#shape = shape;
   }
   width() {
@@ -23,7 +24,7 @@ export class RotatingShape {
   blockAt(row,col){
     return this.#shape[row][col];
   }
-  
+
   toString() {
     return shapeToString(this);
   }
