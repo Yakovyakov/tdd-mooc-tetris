@@ -21,14 +21,7 @@ export class RotatingShape {
   }
 
   toString() {
-    let s = '';
-    for (let row = 0; row < this.height(); row++) {
-      for (let col = 0; col < this.width(); col++) {
-        s += this.blockAt(row,col);
-      }
-      s += "\n";
-    }
-    return s;
+    return shapeToString(this);
   }
 
 }
