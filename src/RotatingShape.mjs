@@ -1,5 +1,12 @@
 import { shapeToString } from "./shape.mjs";
 
+function newSquareArray(size) {
+  const newArray = new Array(size);
+  for (let row = 0; row < size; row++) {
+    newArray[row] = new Array(size);
+  }
+  return newArray;
+}
 export class RotatingShape {
   #shape;
 
