@@ -31,7 +31,7 @@ export class Tetromino {
 	static S_SHAPE = Tetromino.fromString(
     `.SS
     SS.
-    S..`,
+    ...`,
 		0,
 		2
 	);
