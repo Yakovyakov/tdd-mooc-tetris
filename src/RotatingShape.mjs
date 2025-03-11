@@ -17,6 +17,7 @@ export class RotatingShape {
   height() {
     return this.#shape.length;
   }
+  
   toString() {
     let s = '';
     for (let row = 0; row < this.height(); row++) {
