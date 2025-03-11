@@ -44,6 +44,15 @@ export class Tetromino {
 		2
 	);
 
+	static L_SHAPE = Tetromino.fromString(
+    `.L.
+    .L.
+    .LL`,
+		0,
+		4
+	);
+
+
 	#currentOrintation;
 	#orientations;
 
