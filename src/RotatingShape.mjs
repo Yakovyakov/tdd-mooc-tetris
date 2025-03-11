@@ -32,6 +32,7 @@ export class RotatingShape {
     }
     return new RotatingShape(shapeRotated);
   }
+  
   blockAt(row,col){
     return this.#shape[row][col];
   }
