@@ -22,7 +22,7 @@ export class RotatingShape {
   }
 
   rotateRight(){
-    shapeRotated = new Array(this.#shape.lenth);
+    const shapeRotated = new Array(this.#shape.lenth);
     for (let row = 0; row < this.#shape.length; row++) {
       shapeRotated[row] = new Array(this.#shape.length);
       for (let column = 0; column < this.#shape.length; column++) {
