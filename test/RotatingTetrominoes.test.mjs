@@ -185,7 +185,7 @@ describe("The Z shape", () => {
 
 });
 
-describe.skip("The L shape", () => {
+describe("The L shape", () => {
   const shape = Tetromino.L_SHAPE;
 
   test("initial orientation", () => {
@@ -216,7 +216,7 @@ describe.skip("The L shape", () => {
 
 });
 
-describe.skip("The J shape", () => {
+describe("The J shape", () => {
   const shape = Tetromino.J_SHAPE;
 
   test("initial orientation", () => {

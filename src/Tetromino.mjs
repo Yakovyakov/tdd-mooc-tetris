@@ -52,6 +52,14 @@ export class Tetromino {
 		4
 	);
 
+	static J_SHAPE = Tetromino.fromString(
+    `.J.
+    .J.
+    JJ.`,
+		0,
+		4
+	);
+
 
 	#currentOrintation;
 	#orientations;
