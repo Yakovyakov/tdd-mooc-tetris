@@ -1,3 +1,5 @@
+import { shapeToString } from "./shape.mjs";
+
 export class RotatingShape {
   #shape;
 
@@ -17,7 +19,7 @@ export class RotatingShape {
   height() {
     return this.#shape.length;
   }
-  
+
   toString() {
     let s = '';
     for (let row = 0; row < this.height(); row++) {
