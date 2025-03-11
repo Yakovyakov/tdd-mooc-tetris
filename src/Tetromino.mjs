@@ -23,26 +23,28 @@ export class Tetromino {
 	#currentOrintation;
 	#orientations;
 	#shape;
-	static fromString(initialShape, currentOrientation = 0, orientationCount = 4) {
+	static fromString(initialShape, currentOrientation, orientationCount = 4) {
 		const shape = RotatingShape.fromString(initialShape);
 		const orientations=[shape,
 			shape.rotateRight(),
 			shape.rotateRight().rotateRight(),
 			shape.rotateRight().rotateRight().rotateRight()
-		].slice(0,4);
-		return new Tetromino(shape);
+		].slice(0,orientationCount);
+		return new Tetromino(shape, currentOrientation, orientations);
 	}
 
 	constructor(initialShape, currentOrientations, orientations) {
 			this.#shape = initialShape;
+			this.#currentOrintation = currentOrientations;
+			this.#orientations = orientations;
 	}
 
 	rotateRight() {
-		return new Tetromino(this.#shape.rotateRight());
+		return new Tetromino(this.#shape.rotateRight(), this.#currentOrintation + 1, this.#orientations);
 	}
 	
 	rotateLeft() {
-		return new Tetromino(this.#shape.rotateLeft());
+		return new Tetromino(this.#shape.rotateLeft(),this.#currentOrintation - 1, this.#orientations);
 	}
 
 	blockAt() {}
