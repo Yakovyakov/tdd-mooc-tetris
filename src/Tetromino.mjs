@@ -9,15 +9,15 @@ export class Tetromino {
   );
 
 	#shape;
+	static fromString(initialShape) {
+		const shape = RotatingShape.fromString(initialShape);
+		return new Tetromino(shape);
+	}
 
 	constructor(initialShape) {
 			this.#shape = initialShape;
 	}
 
-	fromString(initialShape){
-		const shape = RotatingShape.fromString(initialShape);
-		return new Tetromino(shape);
-	}
 	rotateRight() {
 
 	}
@@ -28,6 +28,8 @@ export class Tetromino {
 
 	blockAt() {}
 	
-	toString() {}
+	toString() {
+		return this.#shape.toString();
+	}
 	
 }
