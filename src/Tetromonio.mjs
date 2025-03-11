@@ -6,6 +6,10 @@ export class Tetromino {
 			this.#shape = initialShape;
 	}
 
+	fromString(initialShape){
+		const shape = RotatingShape.fromString(initialShape);
+		return new Tetromino(shape);
+	}
 	rotateRight() {
 
 	}
