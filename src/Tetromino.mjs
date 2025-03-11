@@ -36,6 +36,14 @@ export class Tetromino {
 		2
 	);
 
+	static Z_SHAPE = Tetromino.fromString(
+    `ZZ.
+    .ZZ
+    ...`,
+		0,
+		2
+	);
+
 	#currentOrintation;
 	#orientations;
 
