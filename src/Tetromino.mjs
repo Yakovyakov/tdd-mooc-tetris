@@ -21,7 +21,7 @@ export class Tetromino {
 	#shape;
 	static fromString(initialShape) {
 		const shape = RotatingShape.fromString(initialShape);
-		let orientations=[shape,
+		const orientations=[shape,
 			shape.rotateRight(),
 			shape.rotateRight().rotateRight(),
 			shape.rotateRight().rotateRight().rotateRight()
