@@ -12,7 +12,7 @@ export class RotatingShape {
 
   static fromString(shape) {
     return new RotatingShape(
-      shape.replaceAll(' ', '').split('\n').map((row) => row.split(""))
+      shape.replaceAll(' ', '').trim().split('\n').map((row) => row.split(""))
     );
   }
 
