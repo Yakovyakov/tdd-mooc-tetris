@@ -6,8 +6,16 @@ export class Tetromino {
 			this.#shape = initialShape;
 	}
 
-	rotateRight() { }
+	rotateRight() {
+
+	}
 	
-	rotateLeft() { }
+	rotateLeft() {
+
+	}
+
+	blockAt() {}
+	
+	toString() {}
 	
 }
