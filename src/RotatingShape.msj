@@ -4,4 +4,12 @@ export class RotatingShape {
   constructor(shape) {
     this.#shape = shape;
   }
+  width() {
+    return this.#shape[0].length;
+  }
+
+  height() {
+    return this.#shape.length;
+  }
+
 }
