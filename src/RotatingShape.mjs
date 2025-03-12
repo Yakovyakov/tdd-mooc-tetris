@@ -17,7 +17,6 @@ export class RotatingShape {
   }
 
   constructor(shape) {
-    console.log(shape);
     this.#shape = shape;
   }
   width() {
