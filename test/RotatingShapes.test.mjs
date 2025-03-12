@@ -1,4 +1,3 @@
-
 import { describe, test } from "vitest";
 import { expect } from "chai";
 import { RotatingShape } from "../src/RotatingShape.mjs";
@@ -7,13 +6,13 @@ describe("Rotating 3x3 shape", () => {
   const shape = RotatingShape.fromString(
     `ABC
      DEF
-     GHI`
+     GHI`,
   );
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
       `ABC
        DEF
-       GHI`
+       GHI`,
     );
   });
 
@@ -21,7 +20,7 @@ describe("Rotating 3x3 shape", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `GDA
        HEB
-       IFC`
+       IFC`,
     );
   });
 
@@ -29,12 +28,10 @@ describe("Rotating 3x3 shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `CFI
        BEH
-       ADG`
+       ADG`,
     );
   });
 });
-
-
 
 describe("Rotating 5x5 shape", () => {
   const shape = RotatingShape.fromString(
@@ -42,7 +39,7 @@ describe("Rotating 5x5 shape", () => {
      FGHIJ
      KLMNO
      PQRST
-     UVWXY`
+     UVWXY`,
   );
 
   test("initial orientation", () => {
@@ -51,7 +48,7 @@ describe("Rotating 5x5 shape", () => {
        FGHIJ
        KLMNO
        PQRST
-       UVWXY`
+       UVWXY`,
     );
   });
 
@@ -61,7 +58,7 @@ describe("Rotating 5x5 shape", () => {
        VQLGB
        WRMHC
        XSNID
-       YTOJE`
+       YTOJE`,
     );
   });
 
@@ -71,8 +68,7 @@ describe("Rotating 5x5 shape", () => {
        DINSX
        CHMRW
        BGLQV
-       AFKPU`
+       AFKPU`,
     );
   });
 });
-

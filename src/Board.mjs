@@ -1,27 +1,26 @@
 import { shapeToString } from "./shape.mjs";
 
-const EMPTY = '.';
+const EMPTY = ".";
 
 class Block {
   #letter;
   constructor(letter) {
     this.#letter = letter;
   }
-  blockAt(row,col){
+  blockAt(row, col) {
     return this.#letter;
   }
   letter() {
     return this.#letter;
   }
-  
-  width(){
+
+  width() {
     return 1;
   }
 
-  height(){
+  height() {
     return 1;
   }
-
 }
 
 class MovableShape {
@@ -34,14 +33,14 @@ class MovableShape {
     this.#row = row;
     this.#col = col;
   }
-  blockAt(row,col) {
+  blockAt(row, col) {
     if (
       row >= this.#row &&
       row < this.#row + this.#shape.height() &&
       col >= this.#col &&
       col < this.#col + this.#shape.width()
     ) {
-      return this.#shape.blockAt(row - this.#row ,col - this.#col);
+      return this.#shape.blockAt(row - this.#row, col - this.#col);
     } else {
       return EMPTY;
     }
@@ -56,8 +55,7 @@ class MovableShape {
     for (let row = this.#row; row < this.#row + this.#shape.height(); row++) {
       for (let col = this.#col; col < this.#col + this.#shape.width(); col++) {
         const block = this.blockAt(row, col);
-        if (block !== EMPTY)
-          points.push({ 'row': row, 'col': col });
+        if (block !== EMPTY) points.push({ row: row, col: col });
       }
     }
     return points;
@@ -67,14 +65,14 @@ class MovableShape {
 export class Board {
   #width;
   #height;
-  #falling=null;
+  #falling = null;
   #immobile;
 
   constructor(width, height) {
     this.#width = width;
     this.#height = height;
     this.#immobile = new Array(height);
-    for (let row = 0; row < height; row ++) 
+    for (let row = 0; row < height; row++)
       this.#immobile[row] = new Array(width).fill(EMPTY);
   }
   hasFalling() {
@@ -89,14 +87,14 @@ export class Board {
     return this.#width;
   }
 
-  blockAt (row,col) {
+  blockAt(row, col) {
     if (this.hasFalling()) {
       const block = this.#falling.blockAt(row, col);
       if (block !== EMPTY) {
         return block;
       }
     }
-    return (this.#immobile[row][col]);
+    return this.#immobile[row][col];
   }
 
   drop(piece) {
@@ -106,7 +104,11 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
-    this.#falling = new MovableShape(piece, 0, Math.floor((this.width() - piece.width()) / 2));
+    this.#falling = new MovableShape(
+      piece,
+      0,
+      Math.floor((this.width() - piece.width()) / 2),
+    );
   }
 
   tick() {
@@ -114,7 +116,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveDown();
-    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)){
+    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
       this.#stopFalling();
     } else {
       this.#falling = attempt;
@@ -122,7 +124,7 @@ export class Board {
   }
 
   #hitsFloor(falling) {
-    for ( const block of falling.nonEmptyBlock()) {
+    for (const block of falling.nonEmptyBlock()) {
       if (block.row >= this.height()) {
         return true;
       }
@@ -130,14 +132,13 @@ export class Board {
     return false;
   }
   #hitsImmobile(falling) {
-    for ( const block of falling.nonEmptyBlock()) {
+    for (const block of falling.nonEmptyBlock()) {
       if (this.#immobile[block.row][block.col] != EMPTY) {
         return true;
       }
     }
     return false;
   }
-  
 
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {

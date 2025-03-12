@@ -1,4 +1,3 @@
-
 import { describe, test } from "vitest";
 import { expect } from "chai";
 import { Tetromino } from "../src/Tetromino.mjs";
@@ -23,7 +22,7 @@ describe("The T shape", () => {
     expect(shape.toString()).to.equalShape(
       `.T.
        TTT
-       ...`
+       ...`,
     );
   });
 
@@ -31,7 +30,7 @@ describe("The T shape", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `.T.
        .TT
-       .T.`
+       .T.`,
     );
   });
 
@@ -39,7 +38,7 @@ describe("The T shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `.T.
        TT.
-       .T.`
+       .T.`,
     );
   });
 
@@ -47,8 +46,6 @@ describe("The T shape", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
 });
-
-
 
 describe("The I shape", () => {
   const shape = Tetromino.I_SHAPE;
@@ -59,7 +56,7 @@ describe("The I shape", () => {
        .....
        IIII.
        .....
-       .....`
+       .....`,
     );
   });
 
@@ -69,7 +66,7 @@ describe("The I shape", () => {
        ..I..
        ..I..
        ..I..
-       .....`
+       .....`,
     );
   });
 
@@ -79,7 +76,7 @@ describe("The I shape", () => {
        ..I..
        ..I..
        ..I..
-       .....`
+       .....`,
     );
   });
 
@@ -88,8 +85,6 @@ describe("The I shape", () => {
   });
 });
 
-
-
 describe("The O shape", () => {
   const shape = Tetromino.O_SHAPE;
 
@@ -97,7 +92,7 @@ describe("The O shape", () => {
     expect(shape.toString()).to.equalShape(
       `.OO
        .OO
-       ...`
+       ...`,
     );
   });
 
@@ -105,7 +100,7 @@ describe("The O shape", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `.OO
        .OO
-       ...`
+       ...`,
     );
   });
 
@@ -113,7 +108,7 @@ describe("The O shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `.OO
        .OO
-       ...`
+       ...`,
     );
   });
 
@@ -129,14 +124,14 @@ describe("The S shape", () => {
     expect(shape.toString()).to.equalShape(
       `.SS
        SS.
-       ...`
+       ...`,
     );
   });
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `.S.
        .SS
-       ..S`
+       ..S`,
     );
   });
 
@@ -144,14 +139,12 @@ describe("The S shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `.S.
        .SS
-       ..S`
+       ..S`,
     );
   });
   test("has 2 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(2);
   });
-
-
 });
 
 describe("The Z shape", () => {
@@ -161,14 +154,14 @@ describe("The Z shape", () => {
     expect(shape.toString()).to.equalShape(
       `ZZ.
        .ZZ
-       ...`
+       ...`,
     );
   });
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `..Z
        .ZZ
-       .Z.`
+       .Z.`,
     );
   });
 
@@ -176,13 +169,12 @@ describe("The Z shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `..Z
        .ZZ
-       .Z.`
+       .Z.`,
     );
   });
   test("has 2 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(2);
   });
-
 });
 
 describe("The L shape", () => {
@@ -192,14 +184,14 @@ describe("The L shape", () => {
     expect(shape.toString()).to.equalShape(
       `.L.
        .L.
-       .LL`
+       .LL`,
     );
   });
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `...
        LLL
-       L..`
+       L..`,
     );
   });
 
@@ -207,13 +199,12 @@ describe("The L shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `..L
        LLL
-       ...`
+       ...`,
     );
   });
   test("has 4 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
-
 });
 
 describe("The J shape", () => {
@@ -223,14 +214,14 @@ describe("The J shape", () => {
     expect(shape.toString()).to.equalShape(
       `.J.
        .J.
-       JJ.`
+       JJ.`,
     );
   });
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `J..
        JJJ
-       ...`
+       ...`,
     );
   });
 
@@ -238,11 +229,10 @@ describe("The J shape", () => {
     expect(shape.rotateLeft().toString()).to.equalShape(
       `...
        JJJ
-       ..J`
+       ..J`,
     );
   });
   test("has 4 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
-
 });

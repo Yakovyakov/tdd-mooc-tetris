@@ -12,7 +12,11 @@ export class RotatingShape {
 
   static fromString(shape) {
     return new RotatingShape(
-      shape.replaceAll(' ', '').trim().split('\n').map((row) => row.split(""))
+      shape
+        .replaceAll(" ", "")
+        .trim()
+        .split("\n")
+        .map((row) => row.split("")),
     );
   }
 
@@ -27,7 +31,7 @@ export class RotatingShape {
     return this.#shape.length;
   }
 
-  rotateRight(){
+  rotateRight() {
     const size = this.#shape.length;
     const shapeRotated = newSquareArray(size);
     for (let row = 0; row < size; row++) {
@@ -37,8 +41,8 @@ export class RotatingShape {
     }
     return new RotatingShape(shapeRotated);
   }
-  
-  rotateLeft(){
+
+  rotateLeft() {
     const size = this.#shape.length;
     const shapeRotated = newSquareArray(size);
     for (let row = 0; row < size; row++) {
@@ -48,12 +52,11 @@ export class RotatingShape {
     }
     return new RotatingShape(shapeRotated);
   }
-  blockAt(row,col){
+  blockAt(row, col) {
     return this.#shape[row][col];
   }
 
   toString() {
     return shapeToString(this);
   }
-
 }

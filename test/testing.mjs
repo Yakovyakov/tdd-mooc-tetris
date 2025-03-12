@@ -14,6 +14,6 @@ Assertion.addMethod("equalShape", function (expected) {
     "expected #{this} to equal #{exp} but got #{act}",
     "expected #{this} to not equal #{act}",
     expected,
-    actual
+    actual,
   );
 });
