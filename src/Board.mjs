@@ -122,11 +122,17 @@ export class Board {
     return false;
   }
   #hitsImmobile(falling) {
-    if (this.#immobile[falling.row][falling.col] !== EMPTY) {
-      return true;
+    for (let row = falling.row; row < falling.row + falling.shape.height(); row++) {
+      for (let col = falling.col; col < falling.col + falling.shape.width(); col++) {
+        const block = falling.blockAt(row, col);
+        if (block !== EMPTY && this.#immobile[row][col] != EMPTY) {
+          return true;
+        }
+      }
     }
-  return false;
+    return false;
   }
+
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
