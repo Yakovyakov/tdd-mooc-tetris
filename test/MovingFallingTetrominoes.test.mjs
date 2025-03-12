@@ -215,5 +215,38 @@ describe("Moving Falling tetrominoes", () => {
        ........OO`,
     );
   });
+  test("it cannot be moved down through other blocks (will stop falling)", () => {
+    board.drop(Tetromino.T_SHAPE);
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+    board.moveDown();
+    expect(board.toString(),
+      'the piece arrived at the floor'
+    ).to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....T.....
+       ...TTT....`,
+    );
+    expect(board.hasFalling(),
+      "the player should still be able to move the block",
+    ).to.be.true;
+    board.moveDown();
+    expect(board.toString(),
+      'the piece is on the floor').to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....T.....
+       ...TTT....`,
+     );
+    expect(board.hasFalling(),
+      "not piece falling",
+    ).to.be.false;
+  });
 
 });
