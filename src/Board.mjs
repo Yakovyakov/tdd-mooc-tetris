@@ -34,14 +34,14 @@ class MovableShape {
     this.row = row;
     this.col = col;
   }
-  blockAt(row,col){
+  blockAt(row,col) {
     if (
       row >= this.row &&
-      row < this.row + this.shape.width() &&
+      row < this.row + this.shape.height() &&
       col >= this.col &&
-      col < this.col + this.shape.height()
+      col < this.col + this.shape.width()
     ) {
-      return this.shape.blockAt(row,col);
+      return this.shape.blockAt(row - this.row ,col - this.col);
     } else {
       return EMPTY;
     }
@@ -95,7 +95,7 @@ export class Board {
     if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
-    this.#falling = new MovableShape(letter, 0, Math.floor((this.width() - 1) / 2));
+    this.#falling = new MovableShape(letter, 0, Math.floor((this.width() - letter.width()) / 2));
   }
 
   tick() {
