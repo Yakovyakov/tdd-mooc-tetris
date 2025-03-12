@@ -144,6 +144,11 @@ export class Board {
     this.#falling = attempt;
   }
 
+  moveDown() {
+    const attempt = this.#falling.moveDown();
+    this.#falling = attempt;
+  }
+
   #hitsFloor(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.row >= this.height()) {
