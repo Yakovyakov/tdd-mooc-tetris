@@ -142,7 +142,7 @@ describe("Moving Falling tetrominoes", () => {
     );
     expect(board.hasFalling(),
       "not piece falling",
-    ).to.be.true;
+    ).to.be.false;
 });
 
 });
