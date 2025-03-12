@@ -8,6 +8,18 @@ function fallToBottom(board) {
     board.tick();
   }
 }
+function goToLeftWall(board) {
+  for (let i = 0; i < 10; i++) {
+    board.moveLeft();
+  }
+}
+
+function goToRightWall(board) {
+  for (let i = 0; i < 10; i++) {
+    board.moveRight();
+  }
+}
+
 
 describe("Moving Falling tetrominoes", () => {
   let board;
@@ -143,6 +155,35 @@ describe("Moving Falling tetrominoes", () => {
     expect(board.hasFalling(),
       "not piece falling",
     ).to.be.false;
-});
+  });
+
+  test("it cannot be moved left through other blocks", () => {
+    board.drop(Tetromino.O_SHAPE);
+    goToLeftWall(board);
+    fallToBottom(board);
+    board.drop(Tetromino.O_SHAPE);
+    goToLeftWall(board);
+    fallToBottom(board);
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+    board.moveLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ...T......
+       OOTTT.....
+       OO........
+       OO........
+       OO........`,
+    );
+    board.moveLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ...T......
+       OOTTT.....
+       OO........
+       OO........
+       OO........`,
+    );
+  });
 
 });
