@@ -54,6 +54,10 @@ class MovableShape {
     return new MovableShape(this.#shape, this.#row, this.#col - 1);
   }
 
+  moveRight() {
+    return new MovableShape(this.#shape, this.#row, this.#col + 1);
+  }
+
   nonEmptyBlock() {
     const points = [];
     for (let row = this.#row; row < this.#row + this.#shape.height(); row++) {
@@ -132,6 +136,11 @@ export class Board {
 
   moveLeft() {
     const attempt = this.#falling.moveLeft();
+    this.#falling = attempt;
+  }
+
+  moveRight() {
+    const attempt = this.#falling.moveRight();
     this.#falling = attempt;
   }
 
