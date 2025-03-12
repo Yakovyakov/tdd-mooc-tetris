@@ -26,34 +26,34 @@ class Block {
 
 class MovableShape {
   shape;
-  row;
+  #row;
   col;
 
   constructor(shape, row, col) {
     this.shape = shape;
-    this.row = row;
+    this.#row = row;
     this.col = col;
   }
   blockAt(row,col) {
     if (
-      row >= this.row &&
-      row < this.row + this.shape.height() &&
+      row >= this.#row &&
+      row < this.#row + this.shape.height() &&
       col >= this.col &&
       col < this.col + this.shape.width()
     ) {
-      return this.shape.blockAt(row - this.row ,col - this.col);
+      return this.shape.blockAt(row - this.#row ,col - this.col);
     } else {
       return EMPTY;
     }
   }
 
   moveDown() {
-    return new MovableShape(this.shape, this.row + 1, this.col);
+    return new MovableShape(this.shape, this.#row + 1, this.col);
   }
 
   nonEmptyBlock() {
     const points = [];
-    for (let row = this.row; row < this.row + this.shape.height(); row++) {
+    for (let row = this.#row; row < this.#row + this.shape.height(); row++) {
       for (let col = this.col; col < this.col + this.shape.width(); col++) {
         const block = this.blockAt(row, col);
         if (block !== EMPTY)
@@ -137,6 +137,7 @@ export class Board {
     }
     return false;
   }
+  
 
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
