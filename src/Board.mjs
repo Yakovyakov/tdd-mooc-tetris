@@ -143,7 +143,7 @@ export class Board {
 
   moveRight() {
     const attempt = this.#falling.moveRight();
-    this.#falling = attempt;
+    if (this.#hitsRight(attempt) === false) this.#falling = attempt;
   }
 
   moveDown() {
@@ -155,6 +155,15 @@ export class Board {
     for (const block of falling.nonEmptyBlock()) {
       if (block.col < 0) {
         console.log(block);
+        return true;
+      }
+    }
+    return false;
+  }
+  #hitsRight(falling) {
+    for (const block of falling.nonEmptyBlock()) {
+      if (block.col >= this.width()) {
+        console.log('Hits right -> ',block);
         return true;
       }
     }
