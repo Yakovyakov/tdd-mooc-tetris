@@ -111,10 +111,14 @@ export class Board {
   }
 
   #hitsFloor(falling) {
-    if (falling.row >= this.height()) {
-      return true;
+    for (let row = falling.row; row < falling.row + falling.shape.height(); row++) {
+      for (let col = falling.col; col < falling.col + falling.shape.width(); col++) {
+        const block = falling.blockAt(row, col);
+        if (block !== EMPTY && row >= this.height()) {
+          return true;
+        }
+      }
     }
-
     return false;
   }
   #hitsImmobile(falling) {
