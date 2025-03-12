@@ -35,7 +35,7 @@ describe("Moving Falling tetrominoes", () => {
        ..........`,
     );
   });
-  
+
   test("a falling tetromino can be moved left", () => {
     board.drop(Tetromino.T_SHAPE);
     board.moveRight();
@@ -84,7 +84,5 @@ describe("Moving Falling tetrominoes", () => {
        ..........
        ..........`,
     );
-
   });
-
 });

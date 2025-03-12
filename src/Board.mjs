@@ -136,8 +136,9 @@ export class Board {
 
   moveLeft() {
     const attempt = this.#falling.moveLeft();
-    if (this.#hitsLeft(attempt) === false) 
+    if (this.#hitsLeft(attempt) === false) {
       this.#falling = attempt;
+    }
   }
 
   moveRight() {
@@ -156,7 +157,7 @@ export class Board {
         return true;
       }
     }
-    return false
+    return false;
   }
   #hitsFloor(falling) {
     for (const block of falling.nonEmptyBlock()) {
@@ -166,6 +167,7 @@ export class Board {
     }
     return false;
   }
+  
   #hitsImmobile(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (this.#immobile[block.row][block.col] != EMPTY) {
