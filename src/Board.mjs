@@ -135,6 +135,9 @@ export class Board {
   }
 
   moveLeft() {
+    if (!this.hasFalling()) {
+      return;
+    }
     const attempt = this.#falling.moveLeft();
     if (this.#hitsLeft(attempt) === false) {
       this.#falling = attempt;
@@ -142,6 +145,9 @@ export class Board {
   }
 
   moveRight() {
+    if (!this.hasFalling()) {
+      return;
+    }
     const attempt = this.#falling.moveRight();
     if (this.#hitsRight(attempt) === false) this.#falling = attempt;
   }
