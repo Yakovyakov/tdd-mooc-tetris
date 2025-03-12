@@ -35,7 +35,12 @@ class MovableShape {
     this.col = col;
   }
   blockAt(row,col){
-    if (row === this.row && col === this.col) {
+    if (
+      row >= this.row &&
+      row < this.row + this.shape.width() &&
+      col >= this.col &&
+      col < this.col + this.shape.height()
+    ) {
       return this.shape.blockAt(row,col);
     } else {
       return EMPTY;
