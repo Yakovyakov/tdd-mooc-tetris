@@ -75,9 +75,8 @@ export class Tetromino {
 	}
 
 	constructor(currentOrientation, orientations) {
-			this.#currentOrintation = (currentOrientation + orientations.length) % orientations.length;;
+			this.#currentOrintation = (currentOrientation + orientations.length) % orientations.length;
 			this.#orientations = orientations;
-
 	}
 
 	#shape() {
@@ -91,16 +90,16 @@ export class Tetromino {
 		return new Tetromino(this.#currentOrintation - 1, this.#orientations);
 	}
 
-	with(){
-		this.#orientations[0].length
+	width() {
+		return this.#shape().width();
 	}
 
-	height(){
-		this.#orientations[0].length
+	height() {
+		return this.#shape().height();
 	}
 
 	blockAt(row,col) {
-		this.#orientations[this.#currentOrintation].blockAt(row,col);
+		return this.#orientations[this.#currentOrintation].blockAt(row,col);
 	}
 	
 	toString() {
