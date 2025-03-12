@@ -10,7 +10,7 @@ function fallToBottom(board) {
   }
 }
 
-describe.skip("Falling tetrominoes", () => {
+describe("Falling tetrominoes", () => {
   let board;
   beforeEach(() => {
     board = new Board(10, 6);
@@ -18,7 +18,6 @@ describe.skip("Falling tetrominoes", () => {
 
   test("start from the top middle", () => {
     board.drop(Tetromino.T_SHAPE);
-
     expect(board.toString()).to.equalShape(
       `....T.....
        ...TTT....
