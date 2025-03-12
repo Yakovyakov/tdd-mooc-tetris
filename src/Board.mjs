@@ -139,7 +139,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveLeft();
-    if (this.#hitsLeft(attempt) === false) {
+    if (this.#hitsLeft(attempt) === false && this.#hitsImmobile(attempt) === false) {
       this.#falling = attempt;
     }
   }
