@@ -154,21 +154,21 @@ export class Board {
   #hitsLeft(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.col < 0) {
-        console.log(block);
         return true;
       }
     }
     return false;
   }
+
   #hitsRight(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.col >= this.width()) {
-        console.log('Hits right -> ',block);
         return true;
       }
     }
     return false;
   }
+
   #hitsFloor(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.row >= this.height()) {
