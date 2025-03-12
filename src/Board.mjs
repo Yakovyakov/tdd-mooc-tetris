@@ -130,12 +130,9 @@ export class Board {
     return false;
   }
   #hitsImmobile(falling) {
-    for (let row = falling.row; row < falling.row + falling.shape.height(); row++) {
-      for (let col = falling.col; col < falling.col + falling.shape.width(); col++) {
-        const block = falling.blockAt(row, col);
-        if (block !== EMPTY && this.#immobile[row][col] != EMPTY) {
-          return true;
-        }
+    for ( const block of falling.nonEmptyBlock()) {
+      if (this.#immobile[block.row][block.col] != EMPTY) {
+        return true;
       }
     }
     return false;
