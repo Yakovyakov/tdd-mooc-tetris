@@ -7,9 +7,21 @@ class Block {
   constructor(letter) {
     this.#letter = letter;
   }
+  blockAt(row,col){
+    return this.#letter;
+  }
   letter() {
     return this.#letter;
   }
+  
+  width(){
+    return 1;
+  }
+
+  height(){
+    return 1;
+  }
+
 }
 
 class MovableShape {
@@ -24,7 +36,7 @@ class MovableShape {
   }
   blockAt(row,col){
     if (row === this.row && col === this.col) {
-      return this.shape.letter();
+      return this.shape.blockAt(row,col);
     } else {
       return EMPTY;
     }

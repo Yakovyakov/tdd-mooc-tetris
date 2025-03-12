@@ -91,7 +91,17 @@ export class Tetromino {
 		return new Tetromino(this.#currentOrintation - 1, this.#orientations);
 	}
 
-	blockAt() {}
+	with(){
+		this.#orientations[0].length
+	}
+
+	height(){
+		this.#orientations[0].length
+	}
+
+	blockAt(row,col) {
+		this.#orientations[this.#currentOrintation].blockAt(row,col);
+	}
 	
 	toString() {
 		return this.#shape().toString();
