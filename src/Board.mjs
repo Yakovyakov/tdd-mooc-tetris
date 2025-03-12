@@ -88,14 +88,14 @@ export class Board {
     return (this.#immobile[row][col]);
   }
 
-  drop(letter) {
-    if (typeof letter === "string") {
-      letter = new Block(letter);
+  drop(piece) {
+    if (typeof piece === "string") {
+      piece = new Block(piece);
     }
     if (this.hasFalling()) {
       throw new Error("another piece is already falling");
     }
-    this.#falling = new MovableShape(letter, 0, Math.floor((this.width() - letter.width()) / 2));
+    this.#falling = new MovableShape(piece, 0, Math.floor((this.width() - piece.width()) / 2));
   }
 
   tick() {
