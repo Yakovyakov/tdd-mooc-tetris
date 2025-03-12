@@ -153,7 +153,8 @@ export class Board {
 
   #hitsLeft(falling) {
     for (const block of falling.nonEmptyBlock()) {
-      if (this.#immobile[block.row][block.col] != EMPTY) {
+      if (block.col < 0) {
+        console.log(block);
         return true;
       }
     }
@@ -167,7 +168,7 @@ export class Board {
     }
     return false;
   }
-  
+
   #hitsImmobile(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (this.#immobile[block.row][block.col] != EMPTY) {
