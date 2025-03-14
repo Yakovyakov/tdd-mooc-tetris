@@ -87,9 +87,17 @@ export class Board {
   }
 
   loadFromString(boardString) {
-    const rows = boardString.replaceAll(" ", "").trim().split('\n');s
+    const rows = boardString.replaceAll(" ", "").trim().split('\n');
+
+    if (rows.length !== this.#height){
+      throw new Error(`the number of rows does not match the height of the board`);
+    }
+
     for (let row = 0; row < this.#height; row++) {
       const cells = rows[row].trim().split("");
+      if (cells.length !== this.#width) {
+        throw new Error(`the number of columns does not match the width of the board`);
+      }
       for (let col = 0; col < this.#width; col++) {
         this.#immobile[row][col] = cells[col];
       }
