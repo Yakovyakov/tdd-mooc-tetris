@@ -86,6 +86,16 @@ export class Board {
       this.#immobile[row] = new Array(width).fill(EMPTY);
   }
 
+  loadFromString(boardString) {
+    const rows = boardString.replaceAll(" ", "").trim().split('\n');s
+    for (let row = 0; row < this.#height; row++) {
+      const cells = rows[row].trim().split("");
+      for (let col = 0; col < this.#width; col++) {
+        this.#immobile[row][col] = cells[col];
+      }
+    }
+  }
+  
   hasFalling() {
     return this.#falling !== null;
   }
