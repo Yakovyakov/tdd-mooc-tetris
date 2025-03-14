@@ -11,26 +11,26 @@ export class Tetromino {
 
   static I_SHAPE = Tetromino.fromString(
     `.....
-    .....
-    IIII.
-    .....
-    .....`,
+     .....
+     IIII.
+     .....
+     .....`,
     0,
     2,
   );
 
   static O_SHAPE = Tetromino.fromString(
     `.OO
-    .OO
-    ...`,
+     .OO
+     ...`,
     0,
     1,
   );
 
   static S_SHAPE = Tetromino.fromString(
     `.SS
-    SS.
-    ...`,
+     SS.
+     ...`,
     0,
     2,
   );
@@ -77,6 +77,8 @@ export class Tetromino {
     this.#currentOrintation =
       (currentOrientation + orientations.length) % orientations.length;
     this.#orientations = orientations;
+    for (let i = 0; i < this.#orientations.length; i++)
+      console.log(this.#orientations[i].toString());
   }
 
   #shape() {

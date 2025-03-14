@@ -139,7 +139,10 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveLeft();
-    if (this.#hitsLeft(attempt) === false && this.#hitsImmobile(attempt) === false) {
+    if (
+      this.#hitsLeft(attempt) === false &&
+      this.#hitsImmobile(attempt) === false
+    ) {
       this.#falling = attempt;
     }
   }
@@ -149,7 +152,8 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveRight();
-    if (!this.#hitsRight(attempt) && !this.#hitsImmobile(attempt)) this.#falling = attempt;
+    if (!this.#hitsRight(attempt) && !this.#hitsImmobile(attempt))
+      this.#falling = attempt;
   }
 
   moveDown() {
