@@ -107,7 +107,7 @@ describe("Rotating a Falling tetrominoes", () => {
 
   });
 
-  test("it can not be when thereis no room to rotate(other pieces)", () => {
+  test("it can not be when thereis no room to rotate(right wall)", () => {
     board.loadFromString(
       `..........
        ..........
@@ -136,7 +136,7 @@ describe("Rotating a Falling tetrominoes", () => {
 
   });
 
-  test("it can not be when thereis no room to rotate(right wall)", () => {
+  test("it can not be when thereis no room to rotate(other piece)", () => {
     board.loadFromString(
       `..........
        ..........
@@ -163,7 +163,6 @@ describe("Rotating a Falling tetrominoes", () => {
     );
 
   });
-
 
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
 }); 
