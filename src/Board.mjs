@@ -208,6 +208,10 @@ export class Board {
   #tryRotate(attempt) {
     if (this.#isAllowedMove(attempt)){
       this.#falling = attempt;
+    } else if (this.#isAllowedMove(attempt.moveLeft())) {
+      this.#falling = attempt.moveLeft();
+    } else if (this.#isAllowedMove(attempt.moveRight())) {
+      this.#falling = attempt.moveRight();
     }
   }
   #isOutsideBoard(falling) {
