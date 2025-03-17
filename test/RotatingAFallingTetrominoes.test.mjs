@@ -107,7 +107,7 @@ describe("Rotating a Falling tetrominoes", () => {
 
   });
 
-  test("it can not be when thereis no room to rotate(right wall)", () => {
+  test("it can not be when thereis no room to rotate(other pieces)", () => {
     board.loadFromString(
       `..........
        ..........
@@ -135,6 +135,35 @@ describe("Rotating a Falling tetrominoes", () => {
     );
 
   });
+
+  test("it can not be when thereis no room to rotate(right wall)", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       .XX..XX...
+       .XX..XX...
+       .XX..XX...`,
+    )
+    board.drop(Tetromino.T_SHAPE);
+    board.rotateLeft();
+    moveStepsDown(board, 3);
+    expect(
+      board.hasFalling(),
+      "the player should still be able to rotate the block",
+    ).to.be.true;
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       .XX.TXX...
+       .XXTTXX...
+       .XX.TXX...`,
+    );
+
+  });
+
 
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
 }); 
