@@ -207,15 +207,6 @@ export class Board {
     this.#falling = attempt;
   }
 
-  #hitsLeft(falling) {
-    for (const block of falling.nonEmptyBlock()) {
-      if (block.col < 0) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   #isOutsideBoard(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
