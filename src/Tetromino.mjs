@@ -77,8 +77,8 @@ export class Tetromino {
     this.#currentOrintation =
       (currentOrientation + orientations.length) % orientations.length;
     this.#orientations = orientations;
-    for (let i = 0; i < this.#orientations.length; i++)
-      console.log(this.#orientations[i].toString());
+//    for (let i = 0; i < this.#orientations.length; i++)
+//      console.log(this.#orientations[i].toString());
   }
 
   #shape() {

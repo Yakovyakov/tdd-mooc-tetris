@@ -216,7 +216,10 @@ export class Board {
   #tryRotate(attempt) {
 
     const candidates = [
-      attempt, attempt.moveLeft(), attempt.moveRight()
+      attempt,
+      attempt.moveLeft(),
+      attempt.moveRight(),
+      attempt.moveRight().moveRight()
     ];
     for (let candidate of candidates ) {
       if (this.#isAllowedMove(candidate)){
