@@ -196,6 +196,37 @@ describe("Rotating a Falling tetrominoes", () => {
       );
     });
 
+    test("(walckick) special case I_SHAPE", () => {
+      board.drop(Tetromino.I_SHAPE);
+      board.rotateLeft();
+      expect(
+        board.toString(),
+        "I_SHAPE can not rotate in first row"
+      ).to.equalShape(
+        `..IIII....
+         ..........
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+      moveStepsDown(board, 2);
+      board.rotateLeft();
+      moveToLeftWall(board);
+      board.rotateRight();
+      expect(
+        board.toString(),
+        "walckick I_SHAPE on a left wall have to move 2 stepts to right"
+      ).to.equalShape(
+        `..........
+         ..........
+         IIII......
+         ..........
+         ..........
+         ..........`,
+      );
+    });
+
   });
   
 }); 
