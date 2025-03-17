@@ -112,6 +112,14 @@ export class Board {
     }
   }
   
+  #firstNonEmptyRow(piece){
+    for (let row = 0; row < piece.height(); row++) {
+      for (let col = 0; col < piece.width(); col++) {
+        if (piece.blockAt(row, col) !== EMPTY) return row;
+      }
+    }
+  }
+
   hasFalling() {
     return this.#falling !== null;
   }
@@ -143,7 +151,7 @@ export class Board {
     }
     this.#falling = new MovableShape(
       piece,
-      0,
+      0 - this.#firstNonEmptyRow(piece),
       Math.floor((this.width() - piece.width()) / 2),
     );
   }
