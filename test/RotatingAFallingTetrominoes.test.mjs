@@ -166,7 +166,7 @@ describe("Rotating a Falling tetrominoes", () => {
 
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
   describe('Can walckick', () => {
-    test("can  walckick on left wall", () => {
+    test("can walckick on left wall", () => {
       board.drop(Tetromino.T_SHAPE);
       board.rotateRight();
       moveToLeftWall(board);
@@ -174,6 +174,20 @@ describe("Rotating a Falling tetrominoes", () => {
       expect(board.toString()).to.equalShape(
         `.T........
          TTT.......
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+    });
+    test("can walckick on right wall", () => {
+      board.drop(Tetromino.T_SHAPE);
+      board.rotateLeft();
+      moveToRightWall(board);
+      board.rotateRight();
+      expect(board.toString()).to.equalShape(
+        `........T.
+         .......TTT
          ..........
          ..........
          ..........
