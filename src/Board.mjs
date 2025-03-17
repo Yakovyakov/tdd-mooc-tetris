@@ -237,6 +237,15 @@ export class Board {
     return false;
   }
 
+  #isOutsideBoard(falling) {
+    for (const block of falling.nonEmptyBlock()) {
+      if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   #hitsImmobile(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (this.#immobile[block.row][block.col] != EMPTY) {
