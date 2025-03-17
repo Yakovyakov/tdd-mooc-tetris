@@ -180,6 +180,7 @@ describe("Rotating a Falling tetrominoes", () => {
          ..........`,
       );
     });
+
     test("can walckick on right wall", () => {
       board.drop(Tetromino.T_SHAPE);
       board.rotateLeft();
@@ -194,5 +195,7 @@ describe("Rotating a Falling tetrominoes", () => {
          ..........`,
       );
     });
+
   });
+  
 }); 

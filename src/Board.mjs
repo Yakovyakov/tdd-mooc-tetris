@@ -206,14 +206,18 @@ export class Board {
   }
 
   #tryRotate(attempt) {
-    if (this.#isAllowedMove(attempt)){
-      this.#falling = attempt;
-    } else if (this.#isAllowedMove(attempt.moveLeft())) {
-      this.#falling = attempt.moveLeft();
-    } else if (this.#isAllowedMove(attempt.moveRight())) {
-      this.#falling = attempt.moveRight();
+
+    const candidates = [
+      attempt, attempt.moveLeft(), attempt.moveRight()
+    ];
+    for (let candidate of candidates ) {
+      if (this.#isAllowedMove(candidate)){
+        this.#falling = candidate;
+        return;
+      }
     }
   }
+
   #isOutsideBoard(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
