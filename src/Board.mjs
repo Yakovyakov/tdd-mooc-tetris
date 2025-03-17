@@ -153,7 +153,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveDown();
-    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
+    if (!this.#isAllowedMove(attempt)) {
       this.#stopFalling();
     } else {
       this.#falling = attempt;
@@ -165,10 +165,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveLeft();
-    if (
-      this.#hitsLeft(attempt) === false &&
-      this.#hitsImmobile(attempt) === false
-    ) {
+    if (this.#isAllowedMove(attempt)) {
       this.#falling = attempt;
     }
   }
@@ -178,7 +175,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveRight();
-    if (!this.#hitsRight(attempt) && !this.#hitsImmobile(attempt))
+    if (this.#isAllowedMove(attempt))
       this.#falling = attempt;
   }
 
@@ -187,7 +184,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveDown();
-    if (this.#hitsFloor(attempt) || this.#hitsImmobile(attempt)) {
+    if (!this.#isAllowedMove(attempt)) {
       this.#stopFalling();
     } else {
       this.#falling = attempt;
