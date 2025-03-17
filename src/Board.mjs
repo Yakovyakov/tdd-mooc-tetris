@@ -255,6 +255,10 @@ export class Board {
     return false;
   }
 
+  #isAllowedMove(falling) {
+    return (!this.#isOutsideBoard(falling) && !this.#hitsImmobile(falling));
+  }
+  
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
