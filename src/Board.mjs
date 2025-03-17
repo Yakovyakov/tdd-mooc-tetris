@@ -196,7 +196,9 @@ export class Board {
       return;
     }
     const attempt = this.#falling.rotateRight();
-    this.#falling = attempt;
+    if (this.#isAllowedMove(attempt)){
+      this.#falling = attempt;
+    }
   }
 
   rotateLeft() {
@@ -204,7 +206,9 @@ export class Board {
       return;
     }
     const attempt = this.#falling.rotateLeft();
-    this.#falling = attempt;
+    if (this.#isAllowedMove(attempt)){
+      this.#falling = attempt;
+    }
   }
 
   #isOutsideBoard(falling) {
