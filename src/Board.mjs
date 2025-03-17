@@ -195,22 +195,21 @@ export class Board {
     if (!this.hasFalling()) {
       return;
     }
-    const attempt = this.#falling.rotateRight();
-    if (this.#isAllowedMove(attempt)){
-      this.#falling = attempt;
-    }
+    this.#tryRotate(this.#falling.rotateRight());
   }
 
   rotateLeft() {
     if (!this.hasFalling()) {
       return;
     }
-    const attempt = this.#falling.rotateLeft();
+    this.#tryRotate(this.#falling.rotateLeft());
+  }
+
+  #tryRotate(attempt) {
     if (this.#isAllowedMove(attempt)){
       this.#falling = attempt;
     }
   }
-
   #isOutsideBoard(falling) {
     for (const block of falling.nonEmptyBlock()) {
       if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
