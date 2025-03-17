@@ -191,6 +191,9 @@ export class Board {
   }
 
   rotateRight() {
+    if (!this.hasFalling()) {
+      return;
+    }
     this.#falling = this.#falling.rotateRight();
   }
 
