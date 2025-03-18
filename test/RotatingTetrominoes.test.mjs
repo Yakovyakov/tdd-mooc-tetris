@@ -271,11 +271,11 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
          ....`,
       );
     });
-    /*
+      
     test("has 4 distinct orientations", () => {
       expect(distinctOrientations(shape).size).to.equal(4);
     });
-    */
-    });
+    
+  });
   
 });
