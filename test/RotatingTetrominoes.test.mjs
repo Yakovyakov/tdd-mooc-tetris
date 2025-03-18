@@ -190,6 +190,7 @@ describe("The L shape", () => {
        .LL`,
     );
   });
+
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `...
@@ -205,6 +206,7 @@ describe("The L shape", () => {
        ...`,
     );
   });
+
   test("has 4 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
@@ -220,6 +222,7 @@ describe("The J shape", () => {
        JJ.`,
     );
   });
+
   test("can be rotated right/clockwise", () => {
     expect(shape.rotateRight().toString()).to.equalShape(
       `J..
@@ -235,6 +238,7 @@ describe("The J shape", () => {
        ..J`,
     );
   });
+
   test("has 4 distinct orientations", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
@@ -458,5 +462,40 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
     });
     
   });
+
+  describe("The O shape", () => {
+    const shape = Tetromino.O_SHAPE;
+  
+    test("initial orientation", () => {
+      expect(shape.toString()).to.equalShape(
+        `....
+         .OO.
+         .OO.
+         ....`,
+      );
+    });
+  
+    test("cannot be rotated right/clockwise", () => {
+      expect(shape.rotateRight().toString()).to.equalShape(
+        `....
+         .OO.
+         .OO.
+         ....`,
+      );
+    });
+  
+    test("cannot be rotated left/counter-clockwise", () => {
+      expect(shape.rotateLeft().toString()).to.equalShape(
+        `....
+         .OO.
+         .OO.
+         ....`,
+      );
+    });
+  
+    test("has 1 distinct orientations", () => {
+      expect(distinctOrientations(shape).size).to.equal(1);
+    });
+  });  
 
 });
