@@ -391,5 +391,104 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
     
   });
 
+  describe("It cannot be moved through other blocks", () => {
+    test("it cannot be moved left through other blocks", () => {
+      board.loadFromString(
+        `..........
+         ..........
+         OO........
+         OO........
+         OO........
+         OO........`,
+      )
+      board.drop(Tetromino.T_SHAPE);
+      board.moveDown();
+      board.moveDown();
+      moveToLeftWall(board);
+      expect(board.toString()).to.equalShape(
+        `..........
+         ..........
+         OOTTT.....
+         OO.T......
+         OO........
+         OO........`,
+      );
+      board.moveLeft();
+      expect(board.toString()).to.equalShape(
+        `..........
+         ..........
+         OOTTT.....
+         OO.T......
+         OO........
+         OO........`,
+      );
+    });
+/*
+    test("it cannot be moved right through other blocks", () => {
+      board.loadFromString(
+        `..........
+         ..........
+         ........OO
+         ........OO
+         ........OO
+         ........OO`,
+      )
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      board.moveDown();
+      board.moveRight();
+      board.moveRight();
+      expect(board.toString()).to.equalShape(
+        `..........
+        ......T...
+        .....TTTOO
+        ........OO
+        ........OO
+        ........OO`,
+      );
+      board.moveRight();
+      expect(board.toString()).to.equalShape(
+        `..........
+        ......T...
+        .....TTTOO
+        ........OO
+        ........OO
+        ........OO`,
+      );
+    });
+
+    test("it cannot be moved down through other blocks (will stop falling)", () => {
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      fallToBottom(board);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      board.moveDown();
+      board.moveDown();
+      expect(
+        board.toString(),
+        "the piece arrived at the floor",
+      ).to.equalShape(
+        `..........
+        ..........
+        ....T.....
+        ...TTT....
+        ....T.....
+        ...TTT....`,
+      );
+      expect(
+        board.hasFalling(),
+        "the player should still be able to move the block",
+      ).to.be.true;
+      board.moveDown();
+      expect(board.toString(), "the piece is on the floor").to.equalShape(
+        `..........
+        ..........
+        ....T.....
+        ...TTT....
+        ....T.....
+        ...TTT....`,
+      );
+      expect(board.hasFalling(), "not piece falling").to.be.false;
+    });
+*/
+  });
   
 });
