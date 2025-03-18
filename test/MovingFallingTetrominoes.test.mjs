@@ -11,6 +11,18 @@ function fallToBottom(board) {
   }
 }
 
+function moveToLeftWall(board) {
+  for (let i = 0; i < 10; i++) {
+    board.moveLeft();
+  }
+}
+
+function moveToRightWall(board) {
+  for (let i = 0; i < 10; i++) {
+    board.moveRight();
+  }
+}
+
 describe("Moving Falling tetrominoes", () => {
   let board;
   beforeEach(() => {
@@ -37,7 +49,7 @@ describe("Moving Falling tetrominoes", () => {
     );
   });
 
-  test("a falling tetromino can be moved left", () => {
+  test("a falling tetromino can be moved right", () => {
     board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.moveRight();
     expect(board.toString()).to.equalShape(
@@ -244,4 +256,33 @@ describe("Moving Falling tetrominoes", () => {
       expect(board.hasFalling(), "not piece falling").to.be.false;
     });
   });
+});
+
+describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("a falling tetromino can be moved left", () => {
+    board.drop(Tetromino.T_SHAPE);
+    expect(board.toString()).to.equalShape(
+      `...TTT....
+       ....T.....
+       ..........
+       ..........
+       ..........
+       ..........`,
+    );
+    board.moveLeft();
+    expect(board.toString()).to.equalShape(
+      `..TTT.....
+       ...T......
+       ..........
+       ..........
+       ..........
+       ..........`,
+    );
+  });
+
 });
