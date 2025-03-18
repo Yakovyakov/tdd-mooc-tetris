@@ -239,3 +239,19 @@ describe("The J shape", () => {
     expect(distinctOrientations(shape).size).to.equal(4);
   });
 });
+
+describe('Rotating Terminoes in Arika Rotation System', () => {
+  describe("The T shape", () => {
+    const shape = Tetromino.T_SHAPE;
+  
+    test("initial orientation", () => {
+      expect(shape.toString()).to.equalShape(
+        `....
+         TTT.
+         .T..
+         ....`,
+      );
+    });
+  });
+  
+});
