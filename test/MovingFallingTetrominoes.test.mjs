@@ -355,9 +355,9 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
          ..........`,
       );
     });
-/*
+
     test("it cannot be moved down beyond the board (will stop falling)", () => {
-      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      board.drop(Tetromino.T_SHAPE);
       board.moveDown();
       board.moveDown();
       board.moveDown();
@@ -370,8 +370,8 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
         ..........
         ..........
         ..........
-        ....T.....
-        ...TTT....`,
+        ...TTT....
+        ....T.....`,
       );
       expect(
         board.hasFalling(),
@@ -383,12 +383,12 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
         ..........
         ..........
         ..........
-        ....T.....
-        ...TTT....`,
+        ...TTT....
+        ....T.....`,
       );
       expect(board.hasFalling(), "not piece falling").to.be.false;
     });
-    */
+    
   });
 
   
