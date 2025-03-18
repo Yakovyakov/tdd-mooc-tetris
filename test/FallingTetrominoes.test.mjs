@@ -61,3 +61,53 @@ describe("Falling tetrominoes", () => {
   });
 
 });
+
+describe("Falling tetrominoes in Arika Rotation System", () => {
+  let board;
+  beforeEach(() => {
+    board = new Board(10, 6);
+  });
+
+  test("start from the top middle", () => {
+    board.drop(Tetromino.T_SHAPE);
+    expect(board.toString()).to.equalShape(
+      `...TTT....
+       ....T.....
+       ..........
+       ..........
+       ..........
+       ..........`,
+    );
+  });
+/*
+  test("stop when they hit the bottom", () => {
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ....T.....
+       ...TTT....`,
+    );
+  });
+
+  test("stop when they land on another block", () => {
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    fallToBottom(board);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    fallToBottom(board);
+
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ....T.....
+       ...TTT....
+       ....T.....
+       ...TTT....`,
+    );
+  });
+*/
+});
