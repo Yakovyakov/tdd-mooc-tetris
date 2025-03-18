@@ -334,15 +334,16 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
          ....`,
       );
     });
-    /*
+    
     test("can be rotated left/counter-clockwise", () => {
       expect(shape.rotateLeft().toString()).to.equalShape(
-        `.S.
-        .SS
-        ..S`,
+        `S...
+         SS..
+         .S..
+         ....`,
       );
     });
-
+    /*
     test("has 2 distinct orientations", () => {
       expect(distinctOrientations(shape).size).to.equal(2);
     });
