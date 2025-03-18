@@ -333,32 +333,29 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
          ..........`,
       );
     });
-/*
+
     test("it cannot be moved right beyond the board", () => {
-      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
-      board.moveRight();
-      board.moveRight();
-      board.moveRight();
-      board.moveRight();
+      board.drop(Tetromino.T_SHAPE);
+      moveToRightWall(board);
       expect(board.toString()).to.equalShape(
-        `........T.
-        .......TTT
-        ..........
-        ..........
-        ..........
-        ..........`,
+        `.......TTT
+         ........T.
+         ..........
+         ..........
+         ..........
+         ..........`,
       );
       board.moveRight();
       expect(board.toString()).to.equalShape(
-        `........T.
-        .......TTT
-        ..........
-        ..........
-        ..........
-        ..........`,
+        `.......TTT
+         ........T.
+         ..........
+         ..........
+         ..........
+         ..........`,
       );
     });
-
+/*
     test("it cannot be moved down beyond the board (will stop falling)", () => {
       board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
