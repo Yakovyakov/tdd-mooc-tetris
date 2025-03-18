@@ -308,6 +308,10 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
       );
     });
     
+    test("has 2 distinct orientations", () => {
+      expect(distinctOrientations(shape).size).to.equal(2);
+    });
+    
   });
   
 });
