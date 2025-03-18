@@ -310,5 +310,89 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
        ..........`,
     );
   });
+
+  describe("It cannot be moved beyond the board", () => {
+    test("it cannot be moved left beyond the board", () => {
+      board.drop(Tetromino.T_SHAPE);
+      moveToLeftWall(board);
+      expect(board.toString()).to.equalShape(
+        `TTT.......
+         .T........
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+      board.moveLeft();
+      expect(board.toString()).to.equalShape(
+        `TTT.......
+         .T........
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+    });
+/*
+    test("it cannot be moved right beyond the board", () => {
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      board.moveRight();
+      board.moveRight();
+      board.moveRight();
+      board.moveRight();
+      expect(board.toString()).to.equalShape(
+        `........T.
+        .......TTT
+        ..........
+        ..........
+        ..........
+        ..........`,
+      );
+      board.moveRight();
+      expect(board.toString()).to.equalShape(
+        `........T.
+        .......TTT
+        ..........
+        ..........
+        ..........
+        ..........`,
+      );
+    });
+
+    test("it cannot be moved down beyond the board (will stop falling)", () => {
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+      board.moveDown();
+      board.moveDown();
+      board.moveDown();
+      board.moveDown();
+      expect(
+        board.toString(),
+        "the piece arrived at the floor",
+      ).to.equalShape(
+        `..........
+        ..........
+        ..........
+        ..........
+        ....T.....
+        ...TTT....`,
+      );
+      expect(
+        board.hasFalling(),
+        "the player should still be able to move the block",
+      ).to.be.true;
+      board.moveDown();
+      expect(board.toString(), "the piece is on the floor").to.equalShape(
+        `..........
+        ..........
+        ..........
+        ..........
+        ....T.....
+        ...TTT....`,
+      );
+      expect(board.hasFalling(), "not piece falling").to.be.false;
+    });
+    */
+  });
+
   
 });
