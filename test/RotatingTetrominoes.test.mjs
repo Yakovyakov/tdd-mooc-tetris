@@ -387,4 +387,40 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
     
   });
 
+  describe("The L shape", () => {
+    const shape = Tetromino.L_SHAPE;
+  
+    test("initial orientation", () => {
+      expect(shape.toString()).to.equalShape(
+        `....
+         LLL.
+         L...
+         ....`,
+      );
+    });
+
+    test("can be rotated right/clockwise", () => {
+      expect(shape.rotateRight().toString()).to.equalShape(
+        `LL..
+         .L..
+         .L..
+         ....`,
+      );
+    });
+  
+    test("can be rotated left/counter-clockwise", () => {
+      expect(shape.rotateLeft().toString()).to.equalShape(
+        `.L..
+         .L..
+         .LL.
+         ....`,
+      );
+    });
+
+    test("has 4 distinct orientations", () => {
+      expect(distinctOrientations(shape).size).to.equal(4);
+    });
+  });
+  
+  
 });
