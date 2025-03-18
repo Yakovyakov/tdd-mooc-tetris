@@ -241,6 +241,7 @@ describe("The J shape", () => {
 });
 
 describe('Rotating Terminoes in Arika Rotation System', () => {
+
   describe("The T shape", () => {
     const shape = Tetromino.T_SHAPE;
   
@@ -252,6 +253,28 @@ describe('Rotating Terminoes in Arika Rotation System', () => {
          ....`,
       );
     });
-  });
+
+    test("can be rotated right/clockwise", () => {
+      expect(shape.rotateRight().toString()).to.equalShape(
+        `.T..
+         TT..
+         .T..
+         ....`,
+      );
+    });
+    /*
+    test("can be rotated left/counter-clockwise", () => {
+      expect(shape.rotateLeft().toString()).to.equalShape(
+        `.T.
+         TT.
+         .T.`,
+      );
+    });
+  
+    test("has 4 distinct orientations", () => {
+      expect(distinctOrientations(shape).size).to.equal(4);
+    });
+    */
+    });
   
 });
