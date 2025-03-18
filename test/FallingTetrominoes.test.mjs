@@ -79,9 +79,9 @@ describe("Falling tetrominoes in Arika Rotation System", () => {
        ..........`,
     );
   });
-/*
+  
   test("stop when they hit the bottom", () => {
-    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
 
     expect(board.toString()).to.equalShape(
@@ -89,25 +89,25 @@ describe("Falling tetrominoes in Arika Rotation System", () => {
        ..........
        ..........
        ..........
-       ....T.....
-       ...TTT....`,
+       ...TTT....
+       ....T.....`,
     );
   });
-
+  
   test("stop when they land on another block", () => {
-    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
-    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
+    board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
 
     expect(board.toString()).to.equalShape(
       `..........
        ..........
-       ....T.....
        ...TTT....
        ....T.....
-       ...TTT....`,
+       ...TTT....
+       ....T.....`,
     );
   });
-*/
+
 });
