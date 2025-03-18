@@ -1,63 +1,141 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
-  static T_SHAPE = Tetromino.fromString(
-    `.T.
-     TTT
-     ...`,
-    0,
-    4,
-  );
 
-  static I_SHAPE = Tetromino.fromString(
-    `.....
-     .....
-     IIII.
-     .....
-     .....`,
-    0,
-    2,
-  );
+  static I_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       IIII
+       ....
+       ....`
+    ),
+    RotatingShape.fromString(
+      `..I.
+       ..I.
+       ..I.
+       ..I.`
+    ),
+  ]);
 
-  static O_SHAPE = Tetromino.fromString(
-    `.OO
-     .OO
-     ...`,
-    0,
-    1,
-  );
+  static T_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       TTT.
+       .T..
+       ....`
+    ),
+    RotatingShape.fromString(
+      `.T..
+       TT..
+       .T..
+       ....`
+    ),
+    RotatingShape.fromString(
+      `....
+       .T..
+       TTT.
+       ....`
+    ),
+    RotatingShape.fromString(
+      `.T..
+       .TT.
+       .T..
+       ....`
+    ),
+  ]);
 
-  static S_SHAPE = Tetromino.fromString(
-    `.SS
-     SS.
-     ...`,
-    0,
-    2,
-  );
+  static L_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       LLL.
+       L...
+       ....`
+    ),
+    RotatingShape.fromString(
+      `LL..
+       .L..
+       .L..
+       ....`
+    ),
+    RotatingShape.fromString(
+      `....
+       ..L.
+       LLL.
+       ....`
+    ),
+    RotatingShape.fromString(
+      `.L..
+       .L..
+       .LL.
+       ....`
+    ),
+  ]);
 
-  static Z_SHAPE = Tetromino.fromString(
-    `ZZ.
-    .ZZ
-    ...`,
-    0,
-    2,
-  );
+  static J_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       JJJ.
+       ..J.
+       ....`
+    ),
+    RotatingShape.fromString(
+      `.J..
+       .J..
+       JJ..
+       ....`
+    ),
+    RotatingShape.fromString(
+      `....
+       J...
+       JJJ.
+       ....`
+    ),
+    RotatingShape.fromString(
+      `.JJ.
+       .J..
+       .J..
+       ....`
+    ),
+  ]);
 
-  static L_SHAPE = Tetromino.fromString(
-    `.L.
-    .L.
-    .LL`,
-    0,
-    4,
-  );
+  static S_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       .SS.
+       SS..
+       ....`
+    ),
+    RotatingShape.fromString(
+      `S...
+       SS..
+       .S..
+       ....`
+    ),
+  ]);
 
-  static J_SHAPE = Tetromino.fromString(
-    `.J.
-    .J.
-    JJ.`,
-    0,
-    4,
-  );
+  static Z_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       ZZ..
+       .ZZ.
+       ....`
+    ),
+    RotatingShape.fromString(
+      `..Z.
+       .ZZ.
+       .Z..
+       ....`
+    ),
+  ]);
+
+  static O_SHAPE = new Tetromino(0, [
+    RotatingShape.fromString(
+      `....
+       .OO.
+       .OO.
+       ....`
+    ),
+  ]);
 
   #currentOrintation;
   #orientations;
