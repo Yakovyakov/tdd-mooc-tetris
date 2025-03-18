@@ -286,4 +286,96 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
 
   });
 
+  // TODO: it can not be when thereis no room to rotate(left wall, right wall, other pieces...)
+
+  test("it can not be when thereis no room to rotate(left wall)", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       ..XX......
+       ..XX......
+       ..XX......`,
+    )
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+    board.rotateLeft();
+    moveToLeftWall(board);
+    moveStepsDown(board, 3);
+    expect(
+      board.hasFalling(),
+      "the player should still be able to rotate the block",
+    ).to.be.true;
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       T.XX......
+       TTXX......
+       T.XX......`,
+    );
+
+  });
+
+  test("it can not be when thereis no room to rotate(right wall)", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       ......XX..
+       ......XX..
+       ......XX..`,
+    )
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+    board.rotateLeft();
+    moveToRightWall(board);
+    moveStepsDown(board, 3);
+    expect(
+      board.hasFalling(),
+      "the player should still be able to rotate the block",
+    ).to.be.true;
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ......XXT.
+       ......XXTT
+       ......XXT.`,
+    );
+
+  });
+
+  test("it can not be when thereis no room to rotate(other piece)", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       .XXX..X...
+       .XXX..X...
+       .XXX..X...`,
+    )
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+
+    board.rotateLeft();
+    moveStepsDown(board, 3);
+    expect(
+      board.hasFalling(),
+      "the player should still be able to rotate the block",
+    ).to.be.true;
+    board.rotateLeft();
+    expect(board.toString()).to.equalShape(
+      `..........
+       ..........
+       ..........
+       .XXXT.X...
+       .XXXTTX...
+       .XXXT.X...`,
+    );
+
+  });
+
 });
