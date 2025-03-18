@@ -378,4 +378,71 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
 
   });
 
+  // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
+  describe('Can walckick', () => {
+    test("can walckick on left wall", () => {
+      board.drop(Tetromino.T_SHAPE);
+      board.moveDown();
+      board.rotateLeft();
+      moveToLeftWall(board);
+      board.rotateLeft();
+      expect(board.toString()).to.equalShape(
+        ` ..........
+          .T........
+          TTT.......
+          ..........
+          ..........
+          ..........`,
+      );
+    });
+
+    test("can walckick on right wall", () => {
+      board.drop(Tetromino.T_SHAPE);
+      board.moveDown();
+      board.rotateRight();
+      moveToRightWall(board);
+      board.rotateRight();
+      expect(board.toString()).to.equalShape(
+        `..........
+         ........T.
+         .......TTT
+         ..........
+         ..........
+         ..........`,
+      );
+    });
+
+    test("(walckick) special case I_SHAPE", () => {
+      board.drop(Tetromino.I_SHAPE);
+      board.rotateLeft();
+      expect(
+        board.toString(),
+        "I_SHAPE can not rotate in first row"
+      ).to.equalShape(
+        `...IIII...
+         ..........
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+      moveStepsDown(board, 1);
+      board.rotateLeft();
+      moveToLeftWall(board);
+      board.rotateRight();
+      expect(
+        board.toString(),
+        "walckick I_SHAPE on a left wall have to move 2 stepts to right"
+      ).to.equalShape(
+        `..........
+         IIII......
+         ..........
+         ..........
+         ..........
+         ..........`,
+      );
+    });
+  
+  });
+  
 });
