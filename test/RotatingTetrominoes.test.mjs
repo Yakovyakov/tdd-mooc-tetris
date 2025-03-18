@@ -2,6 +2,9 @@ import { describe, test } from "vitest";
 import { expect } from "chai";
 import { Tetromino } from "../src/Tetromino.mjs";
 
+
+import { OldTetrominoesRotationsRules } from "./OldTetrominoesRotationsRules.mjs";
+
 function distinctOrientations(shape) {
   const distinct = new Set();
   let goingRight = shape;
@@ -16,7 +19,7 @@ function distinctOrientations(shape) {
 }
 
 describe("The T shape", () => {
-  const shape = Tetromino.T_SHAPE;
+  const shape = OldTetrominoesRotationsRules.T_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -48,7 +51,7 @@ describe("The T shape", () => {
 });
 
 describe("The I shape", () => {
-  const shape = Tetromino.I_SHAPE;
+  const shape = OldTetrominoesRotationsRules.I_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -86,7 +89,7 @@ describe("The I shape", () => {
 });
 
 describe("The O shape", () => {
-  const shape = Tetromino.O_SHAPE;
+  const shape = OldTetrominoesRotationsRules.O_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -118,7 +121,7 @@ describe("The O shape", () => {
 });
 
 describe("The S shape", () => {
-  const shape = Tetromino.S_SHAPE;
+  const shape = OldTetrominoesRotationsRules.S_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -148,7 +151,7 @@ describe("The S shape", () => {
 });
 
 describe("The Z shape", () => {
-  const shape = Tetromino.Z_SHAPE;
+  const shape = OldTetrominoesRotationsRules.Z_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -178,7 +181,7 @@ describe("The Z shape", () => {
 });
 
 describe("The L shape", () => {
-  const shape = Tetromino.L_SHAPE;
+  const shape = OldTetrominoesRotationsRules.L_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(
@@ -208,7 +211,7 @@ describe("The L shape", () => {
 });
 
 describe("The J shape", () => {
-  const shape = Tetromino.J_SHAPE;
+  const shape = OldTetrominoesRotationsRules.J_SHAPE;
 
   test("initial orientation", () => {
     expect(shape.toString()).to.equalShape(

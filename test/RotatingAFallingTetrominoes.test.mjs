@@ -3,6 +3,8 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
+import { OldTetrominoesRotationsRules } from "./OldTetrominoesRotationsRules.mjs";
+
 function fallToBottom(board) {
   for (let i = 0; i < 10; i++) {
     board.tick();
@@ -35,7 +37,7 @@ describe("Rotating a Falling tetrominoes", () => {
 
   // TODO: A falling tetrominoes can be rotated clockwise
   test("a falling tetrominoes can be rotated clockwise", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     expect(board.toString()).to.equalShape(
       `....T.....
        ...TTT....
@@ -57,7 +59,7 @@ describe("Rotating a Falling tetrominoes", () => {
   });
   // TODO: A falling tetrominoes can be rotated counter clockwise
   test("a falling tetrominoes can be rotated counter clockwise", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     expect(board.toString()).to.equalShape(
       `....T.....
        ...TTT....
@@ -87,7 +89,7 @@ describe("Rotating a Falling tetrominoes", () => {
        ..XX......
        ..XX......`,
     )
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveToLeftWall(board);
     moveStepsDown(board, 3);
@@ -116,7 +118,7 @@ describe("Rotating a Falling tetrominoes", () => {
        ......XX..
        ......XX..`,
     )
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveToRightWall(board);
     moveStepsDown(board, 3);
@@ -145,7 +147,7 @@ describe("Rotating a Falling tetrominoes", () => {
        .XX..XX...
        .XX..XX...`,
     )
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveStepsDown(board, 3);
     expect(
@@ -167,7 +169,7 @@ describe("Rotating a Falling tetrominoes", () => {
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
   describe('Can walckick', () => {
     test("can walckick on left wall", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.rotateRight();
       moveToLeftWall(board);
       board.rotateLeft();
@@ -182,7 +184,7 @@ describe("Rotating a Falling tetrominoes", () => {
     });
 
     test("can walckick on right wall", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.rotateLeft();
       moveToRightWall(board);
       board.rotateRight();
@@ -197,7 +199,7 @@ describe("Rotating a Falling tetrominoes", () => {
     });
 
     test("(walckick) special case I_SHAPE", () => {
-      board.drop(Tetromino.I_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.I_SHAPE);
       board.rotateLeft();
       expect(
         board.toString(),

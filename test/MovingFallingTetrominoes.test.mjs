@@ -3,6 +3,8 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
+import { OldTetrominoesRotationsRules } from "./OldTetrominoesRotationsRules.mjs";
+
 function fallToBottom(board) {
   for (let i = 0; i < 10; i++) {
     board.tick();
@@ -15,7 +17,7 @@ describe("Moving Falling tetrominoes", () => {
     board = new Board(10, 6);
   });
   test("a falling tetromino can be moved left", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     expect(board.toString()).to.equalShape(
       `....T.....
        ...TTT....
@@ -36,7 +38,7 @@ describe("Moving Falling tetrominoes", () => {
   });
 
   test("a falling tetromino can be moved left", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.moveRight();
     expect(board.toString()).to.equalShape(
       `.....T....
@@ -49,7 +51,7 @@ describe("Moving Falling tetrominoes", () => {
   });
 
   test("a falling tetromino can be moved down", () => {
-    board.drop(Tetromino.T_SHAPE);
+    board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.moveDown();
     expect(board.toString()).to.equalShape(
       `..........
@@ -63,7 +65,7 @@ describe("Moving Falling tetrominoes", () => {
 
   describe("It cannot be moved beyond the board", () => {
     test("it cannot be moved left beyond the board", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveLeft();
       board.moveLeft();
       board.moveLeft();
@@ -87,7 +89,7 @@ describe("Moving Falling tetrominoes", () => {
     });
 
     test("it cannot be moved right beyond the board", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveRight();
       board.moveRight();
       board.moveRight();
@@ -112,7 +114,7 @@ describe("Moving Falling tetrominoes", () => {
     });
 
     test("it cannot be moved down beyond the board (will stop falling)", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveDown();
       board.moveDown();
@@ -155,7 +157,7 @@ describe("Moving Falling tetrominoes", () => {
          OO........
          OO........`,
       )
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveLeft();
       expect(board.toString()).to.equalShape(
@@ -186,7 +188,7 @@ describe("Moving Falling tetrominoes", () => {
          ........OO
          ........OO`,
       )
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveRight();
       board.moveRight();
@@ -210,9 +212,9 @@ describe("Moving Falling tetrominoes", () => {
     });
 
     test("it cannot be moved down through other blocks (will stop falling)", () => {
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       fallToBottom(board);
-      board.drop(Tetromino.T_SHAPE);
+      board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveDown();
       expect(
