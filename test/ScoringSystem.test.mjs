@@ -12,6 +12,7 @@ describe("Scoring System", () => {
     scoring.update(1);
     expect(scoring.score).to.equal(40);
   });
+
   [
     { level: 0, expectedScore: 40 },
     { level: 1, expectedScore: 80 },
@@ -31,5 +32,27 @@ describe("Scoring System", () => {
       expect(scoring.score).to.equal(expectedScore);
     });
   });
+
+  [
+    { level: 0, expectedScore: 100 },
+    { level: 1, expectedScore: 200 },
+    { level: 2, expectedScore: 300 },
+    { level: 3, expectedScore: 400 },
+    { level: 4, expectedScore: 500 },
+    { level: 5, expectedScore: 600 },
+    { level: 6, expectedScore: 700 },
+    { level: 7, expectedScore: 800 },
+    { level: 8, expectedScore: 900 },
+    { level: 9, expectedScore: 1000 },
+  ].forEach(({ level, expectedScore }) => {
+    it("a two cleared line works for all levels", () => {
+      scoring.level = level;
+      scoring.score = 0;
+      scoring.update(2);
+      expect(scoring.score).to.equal(expectedScore);
+    });
+  });
 });
+
+
 
