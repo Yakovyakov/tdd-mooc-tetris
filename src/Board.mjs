@@ -85,6 +85,7 @@ export class Board {
   #height;
   #falling = null;
   #immobile;
+  onClearLines = null;
 
   constructor(width, height) {
     this.#width = width;
@@ -252,13 +253,18 @@ export class Board {
   }
   
   _clearLines() {
-    let linesCleared =0;
+    let linesCleared = 0;
     for (let row = this.height() - 1; row >= 0; row--)
       if (this.#isNonEmptyFullRow(row)){
         this.#removeRow(row);
         row++;
         linesCleared++;
       }
+
+      if (linesCleared && this.onClearLines) {
+        this.onClearLines(linesCleared);
+      }
+  
   }
 
   #isNonEmptyFullRow(row) {
@@ -282,7 +288,9 @@ export class Board {
         this.#immobile[row][col] = this.blockAt(row, col);
       }
     }
+    
     this._clearLines();
+    
     this.#falling = null;
   }
 
