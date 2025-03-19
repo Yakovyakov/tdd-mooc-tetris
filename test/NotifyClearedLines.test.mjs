@@ -2,9 +2,8 @@ import { beforeEach, describe, test } from "vitest";
 import { expect } from "chai";
 
 import { Board } from "../src/Board.mjs";
-import { Tetromino } from "../src/Tetromino.mjs";
 
-
+import { ScoringSystem } from "../src/ScoringSystem.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
 function fallToBottom(board) {
@@ -27,10 +26,10 @@ describe("Notify Cleared Lines", () => {
     board = new Board(10, 6);
     board.onClearLines = (clearLines) => {
         lineCount = clearLines;
-    }
+    };
 
   });
-  test('a board can clear Full non empty rows', () => {
+  test('a board can notify a cleared lines', () => {
 
     board.loadFromString(
       `..........
@@ -56,4 +55,48 @@ describe("Notify Cleared Lines", () => {
   });
 
 });
+
+describe("Notify Cleared Lines Board - ScoringSystem", () => {
+  let board;
+  let scoringSystem;
+  
+  beforeEach(() => {
+    board = new Board(10, 6);
+    scoringSystem = new ScoringSystem();
+    board.onClearLines = (clearLines) => {
+        scoringSystem.linesCleared(clearLines);
+    }
+
+  });
+  test('a board can notify cleared lines and socoringSystem can lisent it', () => {
+
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       ..........
+       XXXXXXXX..
+       XXXXXXX.X.`,
+    );
+    board.drop(Tetromino.T_SHAPE);
+    board.moveDown();
+    board.rotateRight();
+    moveToRightWall(board);
+    fallToBottom(board);
+    expect(
+      board.toString(),
+      "a board have to clean rows number 2",
+    ).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       .........T
+       XXXXXXX.XT`,
+    );
+
+    expect(scoringSystem.score).to.equal(40);
+  });
+});
+
 
