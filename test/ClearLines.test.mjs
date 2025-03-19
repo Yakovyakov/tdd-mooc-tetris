@@ -75,7 +75,7 @@ describe("Clear lines when falling a Tetrominoes", () => {
     board = new Board(10, 6);
   });
 
-  test("a falling Tetrominoes can clear a single lines when full fill rows", () => {
+  test("a falling Tetrominoes can clear a single line when full fill rows", () => {
     board.loadFromString(
       `..........
        ..........
@@ -100,8 +100,84 @@ describe("Clear lines when falling a Tetrominoes", () => {
        .........T
        XXXXXXX.XT`,
     );
+  });
 
+  test("a falling Tetrominoes can clear 2 lines when full fill rows", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       ..........
+       .......XXX
+       XXX..XXXXX
+       XXXX.XXXXX`,
+    );
+    board.drop(Tetromino.S_SHAPE);
+    board.moveDown();
+    board.rotateRight();
+    fallToBottom(board);
+    expect(
+      board.toString(),
+      "a board have to clean rows 1 and 2",
+    ).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ...S...XXX`,
+    );
+  });
 
+  test("a falling Tetrominoes can clear 3 lines when full fill rows", () => {
+    board.loadFromString(
+      `..........
+       ..........
+       XX.....XXX
+       XXX..XXXXX
+       XXXX.XXXXX
+       XXXX.XXXXX`,
+    );
+    board.drop(Tetromino.L_SHAPE);
+    board.moveDown();
+    board.rotateRight();
+    fallToBottom(board);
+    expect(
+      board.toString(),
+      "a board have to clean rows 1,2 and 3",
+    ).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       XX.....XXX`,
+    );
+  });
+
+  test("a falling Tetrominoes can clear 4 lines when full fill rows", () => {
+    board.loadFromString(
+      `..........
+       ........XX
+       XXXX.XXXXX
+       XXXX.XXXXX
+       XXXX.XXXXX
+       XXXX.XXXXX`,
+    );
+    board.drop(Tetromino.I_SHAPE);
+    board.moveDown();
+    board.rotateRight();
+    fallToBottom(board);
+    expect(
+      board.toString(),
+      "a board have to clean rows 1,2,3 and 4",
+    ).to.equalShape(
+      `..........
+       ..........
+       ..........
+       ..........
+       ..........
+       ........XX`,
+    );
   });
 
 });
