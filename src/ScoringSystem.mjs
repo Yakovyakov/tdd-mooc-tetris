@@ -9,8 +9,17 @@ export class ScoringSystem {
       case 1:
         this.score += (this.level + 1)*40;
         break;
-      default:
+      case 2:
+        this.score += (this.level + 1)*100;
         break;
+      case 3:
+        this.score += (this.level + 1)*300;
+        break;
+      case 4:
+        this.score += (this.level + 1)*1200;
+        break;
+      default:
+        return;
     }
   }
 }
