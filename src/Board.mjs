@@ -253,13 +253,20 @@ export class Board {
   
   _clearLines() {
     for (let row = this.height() - 1; row >= 0; row--)
-      if (!this.#immobile[row].includes(EMPTY)){
-        for (let r = row; r > 0; r--)
-          this.#immobile[r] = [...this.#immobile[r - 1]];
+      if (this.#isNonEmptyFullRow(row)){
+        this.#removeRow(row);
         row=row+1;
         this.#immobile[0] = new Array(this.#width).fill(EMPTY);
       }
   }
+  #isNonEmptyFullRow(row) {
+    return !this.#immobile[row].includes(EMPTY);
+  }
+  #removeRow(row) {
+    for (let r = row; r > 0; r--) 
+      this.#immobile[r] = [...this.#immobile[r - 1]];
+  }
+
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
