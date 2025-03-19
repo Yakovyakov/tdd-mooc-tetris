@@ -266,6 +266,7 @@ export class Board {
         this.#immobile[row][col] = this.blockAt(row, col);
       }
     }
+    this._clearLines();
     this.#falling = null;
   }
 
