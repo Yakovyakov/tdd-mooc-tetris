@@ -21,5 +21,8 @@ export class ScoringSystem {
       default:
         return;
     }
+    this.#rowsCleared += rowsCleared;
+    this.level = Math.floor(this.#rowsCleared / 10);
+
   }
 }

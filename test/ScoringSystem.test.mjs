@@ -113,6 +113,7 @@ describe("Scoring System", () => {
     expect(scoring.level).to.equal(1);
     scoring.update(4);
     scoring.update(4);
+    scoring.update(3);
     expect(scoring.level).to.equal(2);
   });
 
