@@ -256,15 +256,22 @@ export class Board {
       if (this.#isNonEmptyFullRow(row)){
         this.#removeRow(row);
         row=row+1;
-        this.#immobile[0] = new Array(this.#width).fill(EMPTY);
       }
   }
+
   #isNonEmptyFullRow(row) {
     return !this.#immobile[row].includes(EMPTY);
   }
+
   #removeRow(row) {
-    for (let r = row; r > 0; r--) 
+
+    // Delete the row by moving all the rows above it down
+    for (let r = row; r > 0; r--) {
       this.#immobile[r] = [...this.#immobile[r - 1]];
+    }
+    // The top row is filled with empty cells
+    this.#immobile[0] = new Array(this.#width).fill(EMPTY);
+
   }
 
   #stopFalling() {
