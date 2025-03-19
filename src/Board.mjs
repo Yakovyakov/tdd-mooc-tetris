@@ -251,6 +251,15 @@ export class Board {
     return (!this.#isOutsideBoard(falling) && !this.#hitsImmobile(falling));
   }
   
+  _clearLines() {
+    for (let row = this.height() - 1; row >= 0; row--)
+      if (!this.#immobile[row].includes(EMPTY)){
+        for (let r = row; r > 0; r--)
+          this.#immobile[r] = [...this.#immobile[r - 1]];
+        row=row+1;
+        this.#immobile[0] = new Array(this.#width).fill(EMPTY);
+      }
+  }
   #stopFalling() {
     for (let row = 0; row < this.height(); row++) {
       for (let col = 0; col < this.width(); col++) {
