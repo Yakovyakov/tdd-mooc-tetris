@@ -252,10 +252,12 @@ export class Board {
   }
   
   _clearLines() {
+    let linesCleared =0;
     for (let row = this.height() - 1; row >= 0; row--)
       if (this.#isNonEmptyFullRow(row)){
         this.#removeRow(row);
-        row=row+1;
+        row++;
+        linesCleared++;
       }
   }
 
