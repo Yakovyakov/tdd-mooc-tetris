@@ -3,7 +3,7 @@ export class ScoringSystem {
   level = 0;
   #rowsCleared = 0;
 
-  update(rowsCleared) {
+  linesCleared(rowsCleared) {
 
     switch (rowsCleared){
       case 1:
