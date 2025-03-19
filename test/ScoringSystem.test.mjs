@@ -96,6 +96,25 @@ describe("Scoring System", () => {
     });
   });
 
+  test("the score acumulate ", () => {
+    scoring.update(1);
+    scoring.update(2);
+    scoring.update(4);
+    scoring.update(2);
+    expect(scoring.score).to.equal(1440);
+  });
+
+  test("The level increases by one every 10 lines cleared.", () => {
+    scoring.update(2);
+    scoring.update(3);
+    expect(scoring.level).to.equal(0);
+    scoring.update(4);
+    scoring.update(2);
+    expect(scoring.level).to.equal(1);
+    scoring.update(4);
+    scoring.update(4);
+    expect(scoring.level).to.equal(2);
+  });
 
 });
 
