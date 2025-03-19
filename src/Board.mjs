@@ -85,7 +85,7 @@ export class Board {
   #height;
   #falling = null;
   #immobile;
-  onClearLines = null;
+  onClearLine = null;
 
   constructor(width, height) {
     this.#width = width;
@@ -261,8 +261,8 @@ export class Board {
         linesCleared++;
       }
 
-      if (linesCleared && this.onClearLines) {
-        this.onClearLines(linesCleared);
+      if (linesCleared && this.onClearLine) {
+        this.onClearLine(linesCleared);
       }
   
   }

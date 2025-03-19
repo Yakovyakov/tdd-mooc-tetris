@@ -24,7 +24,7 @@ describe("Notify Cleared Lines", () => {
   
   beforeEach(() => {
     board = new Board(10, 6);
-    board.onClearLines = (clearLines) => {
+    board.onClearLine = (clearLines) => {
         lineCount = clearLines;
     };
 
@@ -63,7 +63,7 @@ describe("Notify Cleared Lines Board - ScoringSystem", () => {
   beforeEach(() => {
     board = new Board(10, 6);
     scoringSystem = new ScoringSystem();
-    board.onClearLines = (clearLines) => {
+    board.onClearLine = (clearLines) => {
         scoringSystem.linesCleared(clearLines);
     }
 

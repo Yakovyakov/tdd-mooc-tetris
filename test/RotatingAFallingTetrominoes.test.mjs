@@ -88,7 +88,7 @@ describe("Rotating a Falling tetrominoes", () => {
        ..XX......
        ..XX......
        ..XX......`,
-    )
+    );
     board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveToLeftWall(board);
@@ -444,5 +444,5 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
     });
   
   });
-  
+
 });
