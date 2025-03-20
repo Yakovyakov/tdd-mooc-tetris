@@ -46,6 +46,12 @@ describe("ShuffleBag Tests", () => {
 
   // TODO: Property-based tests
   describe("ShuffleBag Property-based tests", () => {
+    const testCases = [];
+    const interval = { min: 0, max: 100};
+    for (let k = interval.min; k <= interval.max; k++) {
+      testCases.push(k);
+    }
+
     
     test("The order of the pieces must be different after refilling", () => {
       const shuffleBag = new ShuffleBag(elements);
@@ -62,17 +68,23 @@ describe("ShuffleBag Tests", () => {
       expect(firstOrder).not.toEqual(secondOrder);
     });
 
-    test("must correctly handle the counting of the remaining items in the bag", () => {
-      const shuffleBag = new ShuffleBag(elements);
+    test.each(testCases)(
+      "must correctly handle the counting of the remaining items in the bag for k = %i extractions",
+      (k) => {
+        const shuffleBag = new ShuffleBag(elements);
 
-      const k = 15;
-      for (let i = 0; i < k; i++) {
-        shuffleBag.next();
-      }
-      
-      const expectedRemaining = (elements.length - (k % elements.length)) % elements.length;
-      expect(shuffleBag._getBagLen()).toBe(expectedRemaining);
-    });
+        for (let i = 0; i < k; i++) {
+          shuffleBag.next();
+        }
+        
+        let expectedRemaining;
+        if (k === 0){
+          expectedRemaining = elements.length;
+        } else {
+          expectedRemaining = (elements.length - (k % elements.length)) % elements.length;
+        }
+        expect(shuffleBag._getBagLen()).toBe(expectedRemaining);
+      });
 
   });
 });
