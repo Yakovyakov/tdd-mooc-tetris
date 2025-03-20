@@ -111,7 +111,7 @@ function renderGame(game, canvas, timestamp) {
   drawBackground(ctx, canvasWidth, canvasHeight);
   for (let row = 0; row < game.rows; row++) {
     for (let column = 0; column < game.columns; column++) {
-      const cell = game.board.cellAt(row, column);
+      const cell = game.board.blockAt(row, column);
       drawCell(ctx, { cell, row, column, cellWidth, cellHeight });
     }
   }
