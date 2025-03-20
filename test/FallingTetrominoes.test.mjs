@@ -11,7 +11,6 @@ function fallToBottom(board) {
   }
 }
 
-
 describe("Falling tetrominoes", () => {
   let board;
   beforeEach(() => {
@@ -59,7 +58,6 @@ describe("Falling tetrominoes", () => {
        ...TTT....`,
     );
   });
-
 });
 
 describe("Falling tetrominoes in Arika Rotation System", () => {
@@ -79,7 +77,7 @@ describe("Falling tetrominoes in Arika Rotation System", () => {
        ..........`,
     );
   });
-  
+
   test("stop when they hit the bottom", () => {
     board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
@@ -93,7 +91,7 @@ describe("Falling tetrominoes in Arika Rotation System", () => {
        ....T.....`,
     );
   });
-  
+
   test("stop when they land on another block", () => {
     board.drop(Tetromino.T_SHAPE);
     fallToBottom(board);
@@ -109,5 +107,4 @@ describe("Falling tetrominoes in Arika Rotation System", () => {
        ....T.....`,
     );
   });
-
 });

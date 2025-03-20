@@ -55,7 +55,6 @@ describe("Rotating a Falling tetrominoes", () => {
        ..........
        ..........`,
     );
-
   });
   // TODO: A falling tetrominoes can be rotated counter clockwise
   test("a falling tetrominoes can be rotated counter clockwise", () => {
@@ -77,7 +76,6 @@ describe("Rotating a Falling tetrominoes", () => {
        ..........
        ..........`,
     );
-
   });
   // TODO: it can not be when thereis no room to rotate(left wall, right wall, other pieces...)
   test("it can not be when thereis no room to rotate(left wall)", () => {
@@ -106,7 +104,6 @@ describe("Rotating a Falling tetrominoes", () => {
        TTXX......
        .TXX......`,
     );
-
   });
 
   test("it can not be when thereis no room to rotate(right wall)", () => {
@@ -117,7 +114,7 @@ describe("Rotating a Falling tetrominoes", () => {
        ......XX..
        ......XX..
        ......XX..`,
-    )
+    );
     board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveToRightWall(board);
@@ -135,7 +132,6 @@ describe("Rotating a Falling tetrominoes", () => {
        ......XXTT
        ......XX.T`,
     );
-
   });
 
   test("it can not be when thereis no room to rotate(other piece)", () => {
@@ -146,7 +142,7 @@ describe("Rotating a Falling tetrominoes", () => {
        .XX..XX...
        .XX..XX...
        .XX..XX...`,
-    )
+    );
     board.drop(OldTetrominoesRotationsRules.T_SHAPE);
     board.rotateLeft();
     moveStepsDown(board, 3);
@@ -163,11 +159,10 @@ describe("Rotating a Falling tetrominoes", () => {
        .XXTTXX...
        .XX.TXX...`,
     );
-
   });
 
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
-  describe('Can walckick', () => {
+  describe("Can walckick", () => {
     test("can walckick on left wall", () => {
       board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.rotateRight();
@@ -203,7 +198,7 @@ describe("Rotating a Falling tetrominoes", () => {
       board.rotateLeft();
       expect(
         board.toString(),
-        "I_SHAPE can not rotate in first row"
+        "I_SHAPE can not rotate in first row",
       ).to.equalShape(
         `..IIII....
          ..........
@@ -218,7 +213,7 @@ describe("Rotating a Falling tetrominoes", () => {
       board.rotateRight();
       expect(
         board.toString(),
-        "walckick I_SHAPE on a left wall have to move 2 stepts to right"
+        "walckick I_SHAPE on a left wall have to move 2 stepts to right",
       ).to.equalShape(
         `..........
          ..........
@@ -228,9 +223,7 @@ describe("Rotating a Falling tetrominoes", () => {
          ..........`,
       );
     });
-
   });
-  
 });
 
 describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
@@ -260,7 +253,6 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        ..........
        ..........`,
     );
-
   });
   // TODO: A falling tetrominoes can be rotated counter clockwise
   test("a falling tetrominoes can be rotated counter clockwise", () => {
@@ -283,7 +275,6 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        ..........
        ..........`,
     );
-
   });
 
   // TODO: it can not be when thereis no room to rotate(left wall, right wall, other pieces...)
@@ -296,7 +287,7 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        ..XX......
        ..XX......
        ..XX......`,
-    )
+    );
     board.drop(Tetromino.T_SHAPE);
     board.moveDown();
     board.rotateLeft();
@@ -315,7 +306,6 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        TTXX......
        T.XX......`,
     );
-
   });
 
   test("it can not be when thereis no room to rotate(right wall)", () => {
@@ -326,7 +316,7 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        ......XX..
        ......XX..
        ......XX..`,
-    )
+    );
     board.drop(Tetromino.T_SHAPE);
     board.moveDown();
     board.rotateLeft();
@@ -345,7 +335,6 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        ......XXTT
        ......XXT.`,
     );
-
   });
 
   test("it can not be when thereis no room to rotate(other piece)", () => {
@@ -356,7 +345,7 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        .XXX..X...
        .XXX..X...
        .XXX..X...`,
-    )
+    );
     board.drop(Tetromino.T_SHAPE);
     board.moveDown();
 
@@ -375,11 +364,10 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
        .XXXTTX...
        .XXXT.X...`,
     );
-
   });
 
   // TODO: when a piece is up again a wall(or a piece), and it is rotated(no room for rotate), move away from the wall ("walckik")
-  describe('Can walckick', () => {
+  describe("Can walckick", () => {
     test("can walckick on left wall", () => {
       board.drop(Tetromino.T_SHAPE);
       board.moveDown();
@@ -417,7 +405,7 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
       board.rotateLeft();
       expect(
         board.toString(),
-        "I_SHAPE can not rotate in first row"
+        "I_SHAPE can not rotate in first row",
       ).to.equalShape(
         `...IIII...
          ..........
@@ -432,7 +420,7 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
       board.rotateRight();
       expect(
         board.toString(),
-        "walckick I_SHAPE on a left wall have to move 2 stepts to right"
+        "walckick I_SHAPE on a left wall have to move 2 stepts to right",
       ).to.equalShape(
         `..........
          IIII......
@@ -442,7 +430,5 @@ describe("Rotating a Falling Tetrominoes in Arika Rotation System", () => {
          ..........`,
       );
     });
-  
   });
-
 });

@@ -2,9 +2,9 @@ export class ShuffleBag {
   #originalBlocks = null;
   #blocks = [];
   constructor(items) {
-      this.#originalBlocks = [...items];
-      this.#blocks = [];
-      this.#refill();
+    this.#originalBlocks = [...items];
+    this.#blocks = [];
+    this.#refill();
   }
 
   #refill() {
@@ -31,6 +31,6 @@ export class ShuffleBag {
     if (this.#blocks.length === 0) {
       this.#refill();
     }
-      return this.#blocks.pop();
-    }
+    return this.#blocks.pop();
   }
+}

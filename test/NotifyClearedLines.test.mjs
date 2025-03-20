@@ -21,16 +21,14 @@ function moveToRightWall(board) {
 describe("Notify Cleared Lines", () => {
   let board;
   let lineCount;
-  
+
   beforeEach(() => {
     board = new Board(10, 6);
     board.onClearLine = (clearLines) => {
-        lineCount = clearLines;
+      lineCount = clearLines;
     };
-
   });
-  test('a board can notify a cleared lines', () => {
-
+  test("a board can notify a cleared lines", () => {
     board.loadFromString(
       `..........
        5........5
@@ -53,23 +51,20 @@ describe("Notify Cleared Lines", () => {
     );
     expect(lineCount).to.equal(3);
   });
-
 });
 
 describe("Notify Cleared Lines Board - ScoringSystem", () => {
   let board;
   let scoringSystem;
-  
+
   beforeEach(() => {
     board = new Board(10, 6);
     scoringSystem = new ScoringSystem();
     board.onClearLine = (clearLines) => {
-        scoringSystem.linesCleared(clearLines);
-    }
-
+      scoringSystem.linesCleared(clearLines);
+    };
   });
-  test('a board can notify cleared lines and socoringSystem can lisent it', () => {
-
+  test("a board can notify cleared lines and socoringSystem can lisent it", () => {
     board.loadFromString(
       `..........
        ..........
@@ -98,5 +93,3 @@ describe("Notify Cleared Lines Board - ScoringSystem", () => {
     expect(scoringSystem.score).to.equal(40);
   });
 });
-
-

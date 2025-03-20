@@ -5,8 +5,8 @@ import { ShuffleBag } from "../src/ShuffleBag.mjs";
 import { shuffle } from "lodash";
 
 describe("ShuffleBag Tests", () => {
-  const elements = ['I', 'T', 'L', 'J', 'S', 'Z', 'O'];
-  
+  const elements = ["I", "T", "L", "J", "S", "Z", "O"];
+
   test("a Bag has elements", () => {
     const shuffleBag = new ShuffleBag(elements);
 
@@ -22,7 +22,6 @@ describe("ShuffleBag Tests", () => {
     const sortElements = elements.sort();
 
     expect(sortBag).to.toStrictEqual(sortElements);
-
   });
 
   test("when an item is removed from the bag, the bag contains one less item.", () => {
@@ -36,7 +35,7 @@ describe("ShuffleBag Tests", () => {
   test("when the bag is empty and another item is requested, the bag is refilled.", () => {
     const shuffleBag = new ShuffleBag(elements);
 
-    for (let i = 0; i < elements.length; i++){
+    for (let i = 0; i < elements.length; i++) {
       shuffleBag.next();
     }
     expect(shuffleBag._getBagLen()).to.equal(0);
@@ -47,12 +46,11 @@ describe("ShuffleBag Tests", () => {
   // TODO: Property-based tests
   describe("ShuffleBag Property-based tests", () => {
     const testCases = [];
-    const interval = { min: 0, max: 100};
+    const interval = { min: 0, max: 100 };
     for (let k = interval.min; k <= interval.max; k++) {
       testCases.push(k);
     }
 
-    
     test("The order of the pieces must be different after refilling", () => {
       const shuffleBag = new ShuffleBag(elements);
 
@@ -76,21 +74,23 @@ describe("ShuffleBag Tests", () => {
         for (let i = 0; i < k; i++) {
           shuffleBag.next();
         }
-        
+
         let expectedRemaining;
-        if (k === 0){
+        if (k === 0) {
           expectedRemaining = elements.length;
         } else {
-          expectedRemaining = (elements.length - (k % elements.length)) % elements.length;
+          expectedRemaining =
+            (elements.length - (k % elements.length)) % elements.length;
         }
         expect(shuffleBag._getBagLen()).toBe(expectedRemaining);
-    });
+      },
+    );
 
     test.each(testCases)(
       "must distribute the items evenly after k(%i) extractions",
       (k) => {
         const shuffleBag = new ShuffleBag(elements);
-        const counts = new Map(elements.map(p => [p, 0]));
+        const counts = new Map(elements.map((p) => [p, 0]));
 
         for (let i = 0; i < k; i++) {
           const element = shuffleBag.next();
@@ -99,10 +99,11 @@ describe("ShuffleBag Tests", () => {
 
         const expectedMin = Math.floor(k / elements.length);
         const expectedMax = Math.ceil(k / elements.length);
-    
+
         for (const [element, count] of counts.entries()) {
           expect(count === expectedMin || count === expectedMax).toBeTruthy();
         }
-      });
+      },
+    );
   });
 });

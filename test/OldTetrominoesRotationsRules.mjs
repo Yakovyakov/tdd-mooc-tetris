@@ -1,7 +1,6 @@
 import { RotatingShape } from "../src/RotatingShape.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
-
 class TetrominoFactory {
   constructor(rotationStrategy) {
     this.rotationStrategy = rotationStrategy;
@@ -19,9 +18,8 @@ class TetrominoFactory {
   }
 }
 
-const tetrominoFactory = new TetrominoFactory('old Rotations Rules')
+const tetrominoFactory = new TetrominoFactory("old Rotations Rules");
 export class OldTetrominoesRotationsRules {
-
   static T_SHAPE = tetrominoFactory.createFromString(
     `.T.
      TTT

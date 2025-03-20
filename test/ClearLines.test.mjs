@@ -4,7 +4,6 @@ import { expect } from "chai";
 import { Board } from "../src/Board.mjs";
 import { Tetromino } from "../src/Tetromino.mjs";
 
-
 import { Tetromino } from "../src/Tetromino.mjs";
 
 import { OldTetrominoesRotationsRules } from "./OldTetrominoesRotationsRules.mjs";
@@ -34,15 +33,13 @@ function moveStepsDown(board, stepts) {
 }
 
 describe("Clear Lines", () => {
-
   let board;
 
   beforeEach(() => {
     board = new Board(10, 6);
   });
 
-  test('a board can clear Full non empty rows', () => {
-
+  test("a board can clear Full non empty rows", () => {
     board.loadFromString(
       `..........
        5........5
@@ -64,11 +61,9 @@ describe("Clear Lines", () => {
        2222..2222`,
     );
   });
-
 });
 
 describe("Clear lines when falling a Tetrominoes", () => {
-
   let board;
 
   beforeEach(() => {
@@ -89,10 +84,7 @@ describe("Clear lines when falling a Tetrominoes", () => {
     board.rotateRight();
     moveToRightWall(board);
     fallToBottom(board);
-    expect(
-      board.toString(),
-      "a board have to clean rows 2",
-    ).to.equalShape(
+    expect(board.toString(), "a board have to clean rows 2").to.equalShape(
       `..........
        ..........
        ..........
@@ -179,5 +171,4 @@ describe("Clear lines when falling a Tetrominoes", () => {
        ........XX`,
     );
   });
-
 });

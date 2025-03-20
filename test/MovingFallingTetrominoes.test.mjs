@@ -131,10 +131,7 @@ describe("Moving Falling tetrominoes", () => {
       board.moveDown();
       board.moveDown();
       board.moveDown();
-      expect(
-        board.toString(),
-        "the piece arrived at the floor",
-      ).to.equalShape(
+      expect(board.toString(), "the piece arrived at the floor").to.equalShape(
         `..........
         ..........
         ..........
@@ -168,7 +165,7 @@ describe("Moving Falling tetrominoes", () => {
          OO........
          OO........
          OO........`,
-      )
+      );
       board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveLeft();
@@ -199,7 +196,7 @@ describe("Moving Falling tetrominoes", () => {
          ........OO
          ........OO
          ........OO`,
-      )
+      );
       board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveRight();
@@ -229,10 +226,7 @@ describe("Moving Falling tetrominoes", () => {
       board.drop(OldTetrominoesRotationsRules.T_SHAPE);
       board.moveDown();
       board.moveDown();
-      expect(
-        board.toString(),
-        "the piece arrived at the floor",
-      ).to.equalShape(
+      expect(board.toString(), "the piece arrived at the floor").to.equalShape(
         `..........
         ..........
         ....T.....
@@ -258,7 +252,7 @@ describe("Moving Falling tetrominoes", () => {
   });
 });
 
-describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
+describe("Moving a Falling Tetrominoes in Arika Rotation System", () => {
   let board;
   beforeEach(() => {
     board = new Board(10, 6);
@@ -362,10 +356,7 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
       board.moveDown();
       board.moveDown();
       board.moveDown();
-      expect(
-        board.toString(),
-        "the piece arrived at the floor",
-      ).to.equalShape(
+      expect(board.toString(), "the piece arrived at the floor").to.equalShape(
         `..........
         ..........
         ..........
@@ -388,7 +379,6 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
       );
       expect(board.hasFalling(), "not piece falling").to.be.false;
     });
-    
   });
 
   describe("It cannot be moved through other blocks", () => {
@@ -400,7 +390,7 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
          XX........
          XX........
          XX........`,
-      )
+      );
       board.drop(Tetromino.T_SHAPE);
       board.moveDown();
       board.moveDown();
@@ -432,7 +422,7 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
          ........XX
          ........XX
          ........XX`,
-      )
+      );
       board.drop(Tetromino.T_SHAPE);
       board.moveDown();
       moveToRightWall(board);
@@ -463,7 +453,7 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
          XXXXXXX...
          XXXXXXX...
          XXXXXXX...`,
-      )
+      );
       board.drop(Tetromino.T_SHAPE);
       board.moveDown();
       expect(
@@ -492,7 +482,5 @@ describe('Moving a Falling Tetrominoes in Arika Rotation System', () => {
       );
       expect(board.hasFalling(), "not piece falling").to.be.false;
     });
-
   });
-  
 });

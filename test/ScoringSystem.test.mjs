@@ -116,8 +116,4 @@ describe("Scoring System", () => {
     scoring.linesCleared(3);
     expect(scoring.level).to.equal(2);
   });
-
 });
-
-
-

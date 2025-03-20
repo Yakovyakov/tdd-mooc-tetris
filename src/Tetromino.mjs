@@ -1,19 +1,18 @@
 import { RotatingShape } from "./RotatingShape.mjs";
 
 export class Tetromino {
-
   static I_SHAPE = new Tetromino(0, [
     RotatingShape.fromString(
       `....
        IIII
        ....
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `..I.
        ..I.
        ..I.
-       ..I.`
+       ..I.`,
     ),
   ]);
 
@@ -22,25 +21,25 @@ export class Tetromino {
       `....
        TTT.
        .T..
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `.T..
        TT..
        .T..
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `....
        .T..
        TTT.
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `.T..
        .TT.
        .T..
-       ....`
+       ....`,
     ),
   ]);
 
@@ -49,25 +48,25 @@ export class Tetromino {
       `....
        LLL.
        L...
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `LL..
        .L..
        .L..
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `....
        ..L.
        LLL.
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `.L..
        .L..
        .LL.
-       ....`
+       ....`,
     ),
   ]);
 
@@ -76,25 +75,25 @@ export class Tetromino {
       `....
        JJJ.
        ..J.
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `.J..
        .J..
        JJ..
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `....
        J...
        JJJ.
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `.JJ.
        .J..
        .J..
-       ....`
+       ....`,
     ),
   ]);
 
@@ -103,13 +102,13 @@ export class Tetromino {
       `....
        .SS.
        SS..
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `S...
        SS..
        .S..
-       ....`
+       ....`,
     ),
   ]);
 
@@ -118,13 +117,13 @@ export class Tetromino {
       `....
        ZZ..
        .ZZ.
-       ....`
+       ....`,
     ),
     RotatingShape.fromString(
       `..Z.
        .ZZ.
        .Z..
-       ....`
+       ....`,
     ),
   ]);
 
@@ -133,7 +132,7 @@ export class Tetromino {
       `....
        .OO.
        .OO.
-       ....`
+       ....`,
     ),
   ]);
 
@@ -155,8 +154,8 @@ export class Tetromino {
     this.#currentOrintation =
       (currentOrientation + orientations.length) % orientations.length;
     this.#orientations = orientations;
-//    for (let i = 0; i < this.#orientations.length; i++)
-//      console.log(this.#orientations[i].toString());
+    //    for (let i = 0; i < this.#orientations.length; i++)
+    //      console.log(this.#orientations[i].toString());
   }
 
   #shape() {

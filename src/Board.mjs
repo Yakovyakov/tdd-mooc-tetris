@@ -96,24 +96,28 @@ export class Board {
   }
 
   loadFromString(boardString) {
-    const rows = boardString.replaceAll(" ", "").trim().split('\n');
+    const rows = boardString.replaceAll(" ", "").trim().split("\n");
 
-    if (rows.length !== this.#height){
-      throw new Error(`the number of rows does not match the height of the board`);
+    if (rows.length !== this.#height) {
+      throw new Error(
+        `the number of rows does not match the height of the board`,
+      );
     }
 
     for (let row = 0; row < this.#height; row++) {
       const cells = rows[row].trim().split("");
       if (cells.length !== this.#width) {
-        throw new Error(`the number of columns does not match the width of the board`);
+        throw new Error(
+          `the number of columns does not match the width of the board`,
+        );
       }
       for (let col = 0; col < this.#width; col++) {
         this.#immobile[row][col] = cells[col];
       }
     }
   }
-  
-  #firstNonEmptyRow(piece){
+
+  #firstNonEmptyRow(piece) {
     for (let row = 0; row < piece.height(); row++) {
       for (let col = 0; col < piece.width(); col++) {
         if (piece.blockAt(row, col) !== EMPTY) return row;
@@ -184,8 +188,7 @@ export class Board {
       return;
     }
     const attempt = this.#falling.moveRight();
-    if (this.#isAllowedMove(attempt))
-      this.#falling = attempt;
+    if (this.#isAllowedMove(attempt)) this.#falling = attempt;
   }
 
   moveDown() {
@@ -215,15 +218,14 @@ export class Board {
   }
 
   #tryRotate(attempt) {
-
     const candidates = [
       attempt,
       attempt.moveLeft(),
       attempt.moveRight(),
-      attempt.moveRight().moveRight()
+      attempt.moveRight().moveRight(),
     ];
-    for (let candidate of candidates ) {
-      if (this.#isAllowedMove(candidate)){
+    for (let candidate of candidates) {
+      if (this.#isAllowedMove(candidate)) {
         this.#falling = candidate;
         return;
       }
@@ -232,7 +234,12 @@ export class Board {
 
   #isOutsideBoard(falling) {
     for (const block of falling.nonEmptyBlock()) {
-      if (block.row < 0 || block.row >= this.height() || block.col < 0 || block.col >= this.width()) {
+      if (
+        block.row < 0 ||
+        block.row >= this.height() ||
+        block.col < 0 ||
+        block.col >= this.width()
+      ) {
         return true;
       }
     }
@@ -249,22 +256,21 @@ export class Board {
   }
 
   #isAllowedMove(falling) {
-    return (!this.#isOutsideBoard(falling) && !this.#hitsImmobile(falling));
+    return !this.#isOutsideBoard(falling) && !this.#hitsImmobile(falling);
   }
-  
+
   _clearLines() {
     let linesCleared = 0;
     for (let row = this.height() - 1; row >= 0; row--)
-      if (this.#isNonEmptyFullRow(row)){
+      if (this.#isNonEmptyFullRow(row)) {
         this.#removeRow(row);
         row++;
         linesCleared++;
       }
 
-      if (linesCleared && this.onClearLine) {
-        this.onClearLine(linesCleared);
-      }
-  
+    if (linesCleared && this.onClearLine) {
+      this.onClearLine(linesCleared);
+    }
   }
 
   #isNonEmptyFullRow(row) {
@@ -272,14 +278,12 @@ export class Board {
   }
 
   #removeRow(row) {
-
     // Delete the row by moving all the rows above it down
     for (let r = row; r > 0; r--) {
       this.#immobile[r] = [...this.#immobile[r - 1]];
     }
     // The top row is filled with empty cells
     this.#immobile[0] = new Array(this.#width).fill(EMPTY);
-
   }
 
   #stopFalling() {
@@ -288,9 +292,9 @@ export class Board {
         this.#immobile[row][col] = this.blockAt(row, col);
       }
     }
-    
+
     this._clearLines();
-    
+
     this.#falling = null;
   }
 
