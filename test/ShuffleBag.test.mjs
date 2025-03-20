@@ -69,7 +69,7 @@ describe("ShuffleBag Tests", () => {
     });
 
     test.each(testCases)(
-      "must correctly handle the counting of the remaining items in the bag for k = %i extractions",
+      "must correctly handle the counting of the remaining items in the bag after k(%i) extractions",
       (k) => {
         const shuffleBag = new ShuffleBag(elements);
 
@@ -84,7 +84,25 @@ describe("ShuffleBag Tests", () => {
           expectedRemaining = (elements.length - (k % elements.length)) % elements.length;
         }
         expect(shuffleBag._getBagLen()).toBe(expectedRemaining);
-      });
+    });
 
+    test.each(testCases)(
+      "must distribute the pieces evenly after k(%i) extractions",
+      (k) => {
+        const shuffleBag = new ShuffleBag(elements);
+        const counts = new Map(elements.map(p => [p, 0]));
+
+        for (let i = 0; i < k; i++) {
+          const element = shuffleBag.next();
+          counts.set(element, counts.get(element) + 1);
+        }
+
+        const expectedMin = Math.floor(k / elements.length);
+        const expectedMax = Math.ceil(k / elements.length);
+    
+        for (const [element, count] of counts.entries()) {
+          expect(count === expectedMin || count === expectedMax).toBeTruthy();
+        }
+      });
   });
 });
