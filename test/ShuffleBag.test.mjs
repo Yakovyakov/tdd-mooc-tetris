@@ -87,7 +87,7 @@ describe("ShuffleBag Tests", () => {
     });
 
     test.each(testCases)(
-      "must distribute the pieces evenly after k(%i) extractions",
+      "must distribute the items evenly after k(%i) extractions",
       (k) => {
         const shuffleBag = new ShuffleBag(elements);
         const counts = new Map(elements.map(p => [p, 0]));
