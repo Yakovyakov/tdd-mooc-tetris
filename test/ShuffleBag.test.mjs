@@ -61,5 +61,18 @@ describe("ShuffleBag Tests", () => {
       }
       expect(firstOrder).not.toEqual(secondOrder);
     });
+
+    test("must correctly handle the counting of the remaining items in the bag", () => {
+      const shuffleBag = new ShuffleBag(elements);
+
+      const k = 15;
+      for (let i = 0; i < k; i++) {
+        shuffleBag.next();
+      }
+      
+      const expectedRemaining = (elements.length - (k % elements.length)) % elements.length;
+      expect(shuffleBag._getBagLen()).toBe(expectedRemaining);
+    });
+
   });
 });
